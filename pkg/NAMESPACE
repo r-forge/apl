@@ -1,0 +1,12 @@
+#importFrom(package, "function")
+#exportClasses( "classname")
+
+#exportMethods(
+#      "methodname"
+#)
+
+#export(
+#      "functionname"
+#)
+
+#S3method("functionname", "packagename")

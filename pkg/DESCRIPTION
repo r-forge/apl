@@ -1,10 +1,12 @@
 Package: apl
-Type: Package
-Title: What the package does (short line)
-Version: 1.0
-Date: 2009-09-21
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
-LazyLoad: yes
+Version: 0.01-01
+Date: 2010-6-31
+Title: APL array manipulation functions 
+Author:  Jan de Leeuw <deleeuw@stat.ucla.edu>, 
+        Masanao Yajima <yajima@stat.columbia.edu>,
+Maintainer: Masanao Yajima <yajima@stat.columbia.edu>
+Depends: methods, R (>= 2.9.0)
+SystemRequirements: 
+URL: http://gifi.stat.ucla.edu
+Description: R version of the array manipulation functions of APL.
+License: GPL (>= 2)
