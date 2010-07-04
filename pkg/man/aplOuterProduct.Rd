@@ -56,7 +56,4 @@ G. Helzer. (1989):
 ## The function is currently defined as
 function(x,y,f="*") return(outer(x,y,f))
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ manip }

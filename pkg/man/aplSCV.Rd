@@ -56,7 +56,4 @@ function(x,f="+") {
     return(sapply(1:length(x),function(i) aplRDV(x[1:i],f)))
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ manip }

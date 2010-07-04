@@ -65,7 +65,4 @@ z<-.C("aplReduceC",list(ff),as.double(a),as.integer(k),as.integer(length(k)),as.
 return(array(z[[11]],sz))
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ manip }

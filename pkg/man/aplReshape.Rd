@@ -53,7 +53,4 @@ G. Helzer. (1989):
 ## The function is currently defined as
 function(a,d) return(array(a,d))
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ manip }

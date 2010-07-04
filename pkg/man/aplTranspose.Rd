@@ -1,33 +1,26 @@
 \name{aplTranspose}
 \alias{aplTranspose}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL Transpose
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+reverse the order of the dimensions.
 }
 \usage{
 aplTranspose(a, x = rev(1:aplRank(a)))
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{
-%%     ~~Describe \code{a} here~~
-}
-  \item{x}{
-%%     ~~Describe \code{x} here~~
-}
+  \item{a}{an array}
+  \item{x}{}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+The monadic aplTranspose(a) and aperm(a) are always the same, they reverse the order of the dimensions.
+If x is a permutation of 1:aplRank(a), then aperm(a,x) is actually equal to aplTranspose(a,order(x)). For permutations we could consequently define aplTranspose(a,x) simply as aperm(a,order(x)) (which would undoubtedly
+be more efficient as well).  
+If x is not a permutation, then aperm(a,x) is undefined, but aplTranspose(a,x) can still be defined in some cases.
+If x has aplRank(a) elements equal to one of 1:m, with each of 1:m occurring a least once, then aplTranspose(a,x) has rank m. For obvious reasons dyadic transpose is not used a great deal.}
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+ \item{z }{transposed array}
 }
 \references{
 G. Helzer. (1989):
@@ -36,34 +29,9 @@ G. Helzer. (1989):
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(a,x=rev(1:aplRank(a))) {
-sa<-aplShape(a); ra<-aplRank(a); na<-prod(sa)
-if (length(x) != ra)
-    stop("Length Error")
-rz<-max(x); sz<-rep(0,rz)
-for (i in 1:rz)
-    sz[i]<-min(sa[which(x==i)])
-nz<-prod(sz); z<-array(0,sz)
-array(.C("aplTransposeC",as.double(a),as.integer(x),as.integer(sa),as.integer(ra),as.integer(na),
-	as.integer(sz),as.integer(rz),as.integer(nz),as.double(z))[[9]],sz)
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+%\seealso{
+%}
+%\examples{
+%}
+\keyword{ manip }

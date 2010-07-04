@@ -63,7 +63,4 @@ function(x,y,axis=1) {
     apply(z,(1:n)[-axis],function(i) z[i]<-x[i])
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ manip }

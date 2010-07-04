@@ -62,7 +62,4 @@ z<-array(.C("aplSelectC",as.double(a),as.integer(sa),as.integer(ra),lapply(x,as.
 if (drop) return(drop(z)) else return(z)
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ manip }

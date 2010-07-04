@@ -57,7 +57,4 @@ if ((ind < 1) || (ind > prod(dims))) stop("No such cell")
 .C("aplEncodeC ",as.integer(cell),as.integer(dims),as.integer(n),as.integer(ind))[[1]]
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ manip }
