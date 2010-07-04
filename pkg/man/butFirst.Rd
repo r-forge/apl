@@ -1,55 +1,38 @@
 \name{butFirst}
 \alias{butFirst}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{
-%%  ~~function to do ... ~~
-}
+\title{Everything but the first element}
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Returns everything but the first element in a vector.
 }
 \usage{
 butFirst(x)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
-%%     ~~Describe \code{x} here~~
-}
+  \item{x}{a vector}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+This function takes a vector and returns the original vector without the first element.
 }
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
+%\references{
 %% ~put references to the literature/web site here ~
-}
+%}
 \author{
-%%  ~~who you are~~
+  Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
+%\note{
 %%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+%}
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+    \code{\link[apl]{first}}, 
+    \code{\link[apl]{last}}, 
+    \code{\link[apl]{butLast}}
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function(x) return(x[-1])
+
+\examples{
+    x <- 1:10
+    butFirst(x)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{manip}
+

@@ -1,58 +1,34 @@
 \name{unit}
 \alias{unit}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Check to see if a vector is in the range.
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Function to check if a unit is within a range.
 }
 \usage{
 unit(i, n)
 }
-%- maybe also 'usage' for other objects documented here.
-\arguments{
-  \item{i}{
-%%     ~~Describe \code{i} here~~
-}
-  \item{n}{
-%%     ~~Describe \code{n} here~~
-}
+arguments{
+  \item{i}{a vector to check}
+  \item{n}{maximum of the range}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+This function takes a vector and checks if each element is within the range specified by 1 to n.
 }
 \author{
-%%  ~~who you are~~
+  Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+    \code{\link[apl]{first}}, 
+    \code{\link[apl]{last}}, 
+    \code{\link[apl]{butFirst}},
+    \code{\link[apl]{butLast}}
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function(i,n) ifelse(i==(1:n),1,0)
+\examples{
+unit(2,10)
+unit(11,10)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{manip}

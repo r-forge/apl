@@ -1,55 +1,33 @@
 \name{butLast}
 \alias{butLast}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Everything but the last element
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
-}
+Returns everything but the last element in a vector.}
 \usage{
 butLast(x)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
-%%     ~~Describe \code{x} here~~
-}
+  \item{x}{a vector}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
+This function takes a vector and returns the original vector without the last element.
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+\author{
+  Jan de Leeuw \email{deleeuw@stat.ucla.edu}
+}
+
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+    \code{\link[apl]{first}}, 
+    \code{\link[apl]{last}}, 
+    \code{\link[apl]{butFirst}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(x) return(x[-length(x)])
+    x <- 1:10
+    butLast(x)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ manip }
+

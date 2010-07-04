@@ -2,10 +2,10 @@
 \alias{USE_C}
 \docType{data}
 \title{
-%%   ~~ data name/kind ... ~~
+Dataset
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of the dataset. ~~
+dataset
 }
 \usage{data(USE_C)}
 \format{
@@ -13,16 +13,15 @@
  logi TRUE
 }
 \details{
-%%  ~~ If necessary, more details than the __description__ above ~~
+dataset
 }
 \source{
-%%  ~~ reference to a publication or URL from which the data were obtained ~~
+some source
 }
 \references{
-%%  ~~ possibly secondary sources and usages ~~
+some references
 }
 \examples{
 data(USE_C)
-## maybe str(USE_C) ; plot(USE_C) ...
 }
 \keyword{datasets}

@@ -4,11 +4,10 @@
 \docType{package}
 \title{
 What the package does (short line)
-~~ package title ~~
+APL functions in R
 }
 \description{
-More about what it does (maybe more than one line)
-~~ A concise (1-5 lines) description of the package ~~
+APL functions in R.
 }
 \details{
 \tabular{ll}{
@@ -19,25 +18,22 @@ Date: \tab 2009-09-21\cr
 License: \tab What license is it under?\cr
 LazyLoad: \tab yes\cr
 }
-~~ An overview of how to use the package, including the most important ~~
-~~ functions ~~
+APL functions in R.
 }
 \author{
-Who wrote it
+  Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 
-Maintainer: Who to complain to <yourfault@somewhere.net>
-~~ The author and/or maintainer of the package ~~
+Maintainer: Masanao Yajima<yajima@stat.ucla.edu>
 }
 \references{
-~~ Literature or other references for background information ~~
+G. Helzer. (1989):
+\emph{An Encyclopedia of APL}, second edition, I-APL LTD, St. Albans, G.B.
 }
-~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
-~~ the R documentation directory ~~
 \keyword{ package }
-\seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
-\examples{
-~~ simple examples of the most important functions ~~
-}
+%\seealso{
+%~~ Optional links to other man pages, e.g. ~~
+%~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
+%}
+%\examples{
+%~~ simple examples of the most important functions ~~
+%}

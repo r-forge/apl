@@ -1,8 +1,7 @@
 \name{aplDecode}
 \alias{aplDecode}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+APL Decode
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
@@ -30,10 +29,11 @@ aplDecode(cell, dims)
 %% ...
 }
 \references{
-%% ~put references to the literature/web site here ~
+G. Helzer. (1989):
+\emph{An Encyclopedia of APL}, second edition, I-APL LTD, St. Albans, G.B.
 }
 \author{
-%%  ~~who you are~~
+  Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
 \note{
 %%  ~~further notes~~

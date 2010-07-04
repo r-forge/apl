@@ -27,10 +27,11 @@ arrTest(x)
 %% ...
 }
 \references{
-%% ~put references to the literature/web site here ~
+G. Helzer. (1989):
+\emph{An Encyclopedia of APL}, second edition, I-APL LTD, St. Albans, G.B.
 }
 \author{
-%%  ~~who you are~~
+  Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
 \note{
 %%  ~~further notes~~

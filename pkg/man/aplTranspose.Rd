@@ -2,7 +2,7 @@
 \alias{aplTranspose}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+APL Transpose
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
@@ -30,10 +30,11 @@ aplTranspose(a, x = rev(1:aplRank(a)))
 %% ...
 }
 \references{
-%% ~put references to the literature/web site here ~
+G. Helzer. (1989):
+\emph{An Encyclopedia of APL}, second edition, I-APL LTD, St. Albans, G.B.
 }
 \author{
-%%  ~~who you are~~
+  Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
 \note{
 %%  ~~further notes~~

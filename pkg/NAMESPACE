@@ -5,8 +5,40 @@
 #      "methodname"
 #)
 
-#export(
-#      "functionname"
-#)
+export(
+aplCRV,
+aplDecode,
+aplDrop,
+aplEncode,
+aplExpand,
+aplEXV,
+aplGet,
+aplInnerProduct,
+aplIPV,
+aplJoin,
+aplMemberOf,
+aplOuterProduct,
+aplRank,
+aplRavel,
+aplRDV,
+aplReduce,
+aplReplicate,
+aplReshape,
+aplRotate,
+aplRTV,
+aplScan,
+aplSCV,
+aplSelect,
+aplSet,
+aplShape,
+aplTake,
+aplTranspose,
+arrTest,
+butFirst,
+butLast,
+first,
+last,
+unit
+)
 
 #S3method("functionname", "packagename")
