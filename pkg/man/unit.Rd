@@ -9,7 +9,7 @@ Function to check if a unit is within a range.
 \usage{
 unit(i, n)
 }
-arguments{
+\arguments{
   \item{i}{a vector to check}
   \item{n}{maximum of the range}
 }
@@ -32,3 +32,4 @@ unit(2,10)
 unit(11,10)
 }
 \keyword{manip}
+
