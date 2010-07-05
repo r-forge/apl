@@ -1,6 +1,5 @@
 \name{aplSCV}
 \alias{aplSCV}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL SCV
 }

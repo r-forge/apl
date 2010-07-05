@@ -1,6 +1,5 @@
 \name{aplReplicate}
 \alias{aplReplicate}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL Replicate
 }

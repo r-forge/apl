@@ -1,6 +1,5 @@
 \name{aplOuterProduct}
 \alias{aplOuterProduct}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL Outer Product
 }

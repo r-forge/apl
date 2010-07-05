@@ -1,6 +1,5 @@
 \name{aplReduce}
 \alias{aplReduce}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL Reduce
 }

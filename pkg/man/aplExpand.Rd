@@ -1,6 +1,5 @@
 \name{aplExpand}
 \alias{aplExpand}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL Expand
 }

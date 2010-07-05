@@ -3,7 +3,6 @@
 \alias{apl}
 \docType{package}
 \title{
-What the package does (short line)
 APL functions in R
 }
 \description{

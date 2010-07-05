@@ -1,6 +1,5 @@
 \name{aplRotate}
 \alias{aplRotate}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL Rotate
 }

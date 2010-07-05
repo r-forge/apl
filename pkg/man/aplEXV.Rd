@@ -1,6 +1,5 @@
 \name{aplEXV}
 \alias{aplEXV}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL IEXV
 }

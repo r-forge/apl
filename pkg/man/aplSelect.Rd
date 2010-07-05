@@ -1,6 +1,5 @@
 \name{aplSelect}
 \alias{aplSelect}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL Select
 }

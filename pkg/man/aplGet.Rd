@@ -1,6 +1,5 @@
 \name{aplGet}
 \alias{aplGet}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL Get
 }

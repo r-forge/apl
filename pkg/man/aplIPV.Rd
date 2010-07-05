@@ -1,6 +1,5 @@
 \name{aplIPV}
 \alias{aplIPV}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL IPV
 }

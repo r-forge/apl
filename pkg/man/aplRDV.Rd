@@ -1,6 +1,5 @@
 \name{aplRDV}
 \alias{aplRDV}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL RDV
 }

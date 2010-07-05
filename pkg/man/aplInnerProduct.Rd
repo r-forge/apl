@@ -1,6 +1,5 @@
 \name{aplInnerProduct}
 \alias{aplInnerProduct}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL InnerProduct
 }

@@ -1,6 +1,5 @@
 \name{aplSet}
 \alias{aplSet}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL Set
 }

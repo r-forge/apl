@@ -1,6 +1,5 @@
 \name{aplTake}
 \alias{aplTake}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL Take
 }

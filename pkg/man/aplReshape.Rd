@@ -1,6 +1,5 @@
 \name{aplReshape}
 \alias{aplReshape}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL Reshape
 }

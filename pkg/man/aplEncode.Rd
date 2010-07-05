@@ -1,6 +1,5 @@
 \name{aplEncode}
 \alias{aplEncode}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 APL Encode
 }
