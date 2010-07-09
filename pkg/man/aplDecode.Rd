@@ -8,24 +8,21 @@ APL Decode
 \usage{
 aplDecode(cell, dims)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
-  \item{cell}{
-%%     ~~Describe \code{cell} here~~
-}
-  \item{dims}{
-%%     ~~Describe \code{dims} here~~
-}
+  \item{cell}{}
+  \item{dims}{}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+If cell is scalar and dims is a vector, then LR is the polynomial 
+evaluated at L. This means that if the ri are nonnegative integers less than L, then
+LR gives the base-10 equivalent of the base-L number R.
+
+If the arguments cell and dims are vectors of the same length. In the array context,
+decode returns the index of element x[b] in an array x with dim(x)=a. Obviously
+the R implementation, which uses colum-major ordering, will give results different
+from the APL implementation. In APL the expression 3 3 31 2 3 evaluates to 18,
+while aplDecode(1:3,rep(3,3)) gives 22.
 }
 \references{
 G. Helzer. (1989):
@@ -34,25 +31,11 @@ G. Helzer. (1989):
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+    \code{\link[apl]{aplEncode}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function(cell,dims) {
-n<-length(dims)
-if (any(cell>dims) || any(cell<1)) stop("No such cell")
-.C("aplDecodeC ",as.integer(cell),as.integer(dims),as.integer(n),as.integer(1))[[4]]
-  }
 }
 \keyword{ manip }

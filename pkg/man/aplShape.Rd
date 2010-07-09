@@ -3,7 +3,8 @@
 \title{
 APL Shape
 }
-\description{Dimensions of an array.
+\description{
+Dimensions of an array.
 }
 \usage{
 aplShape(a)
@@ -11,7 +12,7 @@ aplShape(a)
 \arguments{
   \item{a}{an array}
 }
-\details{Shape gives the dimensions of an array.}
+\details{This function returns the size of each dimensions of an array.}
 
 \references{
 G. Helzer. (1989):
@@ -22,8 +23,7 @@ G. Helzer. (1989):
 }
 
 \seealso{
-
-    \code{\link[apl]{APLReshape}}, 
+    \code{\link[apl]{aplReshape}}, 
     \code{\link[apl]{aplRank}}
 }
 \examples{

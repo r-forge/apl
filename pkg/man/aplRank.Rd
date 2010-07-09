@@ -4,26 +4,16 @@
 APL Rank
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Returns the dimension of an array.
 }
 \usage{
 aplRank(a)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{
-%%     ~~Describe \code{a} here~~
-}
+  \item{a}{an array}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+This function returns the dimension of an array.
 }
 \references{
 G. Helzer. (1989):
@@ -32,21 +22,14 @@ G. Helzer. (1989):
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+    \code{\link[apl]{aplShape}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(a) aplShape(aplShape(a))
+    a <- array( 1:10, c(2,5))
+    aplRank( a )
+    b <- array( 1:27, c(3,3,3))
+    aplRank( b )
 }
 \keyword{ manip }
