@@ -4,7 +4,7 @@
 APL Shape
 }
 \description{
-Dimensions of an array.
+Number of components in each dimension of an array.
 }
 \usage{
 aplShape(a)

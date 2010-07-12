@@ -6,7 +6,7 @@ APL Decode
 \description{
 }
 \usage{
-aplDecode(cell, dims)
+    aplDecode(cell, dims)
 }
 
 \arguments{

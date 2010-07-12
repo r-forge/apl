@@ -4,29 +4,17 @@
 APL Reshape
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Reshape a vector, an array, or a matrix.
 }
 \usage{
 aplReshape(a, d)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{
-%%     ~~Describe \code{a} here~~
-}
-  \item{d}{
-%%     ~~Describe \code{d} here~~
-}
+  \item{a}{ a vector, an array, or a matrix }
+  \item{d}{ a vector of dimension size to reshape a }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Reshape will convert a into an array with dimension specified by d.
 }
 \references{
 G. Helzer. (1989):
@@ -35,21 +23,12 @@ G. Helzer. (1989):
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+    \code{\link[apl]{aplShape}}, 
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(a,d) return(array(a,d))
+aplReshape(1:10,c(2,5))
+aplReshape(array(1:27,c(3,9)),c(9,3))
+aplReshape(matrix(1:27,9),c(3,9))
 }
 \keyword{ manip }

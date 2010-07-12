@@ -4,32 +4,18 @@
 APL Join
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Joins 2 arrays together along specified dimension.
 }
 \usage{
 aplJoin(a, b, k)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{
-%%     ~~Describe \code{a} here~~
-}
-  \item{b}{
-%%     ~~Describe \code{b} here~~
-}
-  \item{k}{
-%%     ~~Describe \code{k} here~~
-}
+  \item{a}{an array}
+  \item{b}{an array}
+  \item{k}{a number specifying dimension to join a and b along.}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Array a and b are joined along the dimension k.  If a is n by m array and b is k by j array to join a and b along 1st dimension, m must be same as j.  Similary to join along 2nd dimension, n must be same as k.
 }
 \references{
 G. Helzer. (1989):
@@ -38,36 +24,14 @@ G. Helzer. (1989):
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(a,b,k) {
-    if (is.vector(a) && is.vector(b)) return(c(a,b))
-    sa<-aplShape(a); sb<-aplShape(b); ra<-aplRank(a); rb<-aplRank(b)
-    if (ra != rb)
-        stop("Rank error in aplJoin")
-    if (!identical(sa[-k],sb[-k]))
-        stop("Shape error")
-    sz<-sa; sz[k]<-sz[k]+sb[k]; nz<-prod(sz); u<-unit(k,ra)
-    z<-array(0,sz)
-    for (i in 1:nz) {
-        ivec<-aplEncode(i,sz)
-        if (ivec[k] <= sa[k]) z[i]<-a[aplDecode(ivec,sa)]
-            else z[i]<-b[aplDecode(ivec-sa[k]*u,sb)]
-        }
-return(z)
-  }
+a<- array(1:6,c(2,3))
+b<- array(1:4,c(2,2))
+aplJoin(a,b,2)
 }
 \keyword{ manip }

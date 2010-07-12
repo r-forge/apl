@@ -4,32 +4,18 @@
 APL Scan
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Running application of function f across a in dimension specified by k.
 }
 \usage{
 aplScan(a, k, f = "+")
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{
-%%     ~~Describe \code{a} here~~
-}
-  \item{k}{
-%%     ~~Describe \code{k} here~~
-}
-  \item{f}{
-%%     ~~Describe \code{f} here~~
-}
+  \item{a}{a vector, an array, or a matrix}
+  \item{k}{dimension to apply the function f.  If f is "+" and k is 1 then running sum for each column is calculated.}
+  \item{f}{function to apply.  Default is sum.}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+When f is sum aplScan is array version of cumsum.  It applies the function f sequentially in dimension specified by k.
 }
 \references{
 G. Helzer. (1989):
@@ -38,30 +24,13 @@ G. Helzer. (1989):
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+    \code{\link[apl]{aplReduce}}
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function(a,k,f="+") {
-if (is.vector(a)) 
-	return(aplSCV(a,f))
-ff<-if (is.function(f)) f else match.fun(f)
-sa<-aplShape(a); ra<-aplRank(a); sk<-sa[k]; u<-unit(k,ra)
-na<-prod(sa); z<-a
-res<-.C("aplScanC",list(ff),as.double(a),as.integer(k),
-	as.integer(na),as.integer(sa),as.integer(ra),as.double(z))
-return(array(res[[7]],sa))
-  }
+\examples{
+ aplScan(array(1:27,c(3,3,3)),1)
+ aplScan(array(1:27,c(3,3,3)),2,"*")
+ aplScan(array(1:27,c(3,3,3)),3,"-")
 }
 \keyword{ manip }

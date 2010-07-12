@@ -4,32 +4,18 @@
 APL Reduce
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Application of function f across a in dimension specified by k.
 }
 \usage{
 aplReduce(a, k, f = "+")
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{
-%%     ~~Describe \code{a} here~~
-}
-  \item{k}{
-%%     ~~Describe \code{k} here~~
-}
-  \item{f}{
-%%     ~~Describe \code{f} here~~
-}
+  \item{a}{a vector, an array, or a matrix}
+  \item{k}{dimension to apply the function f.}
+  \item{f}{function to apply.  Default is sum.}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Function f is applied accross dimension specified by k.  This function is similar to aplScan.  The output is same as the last element of aplScan.
 }
 \references{
 G. Helzer. (1989):
@@ -38,30 +24,13 @@ G. Helzer. (1989):
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+    \code{\link[apl]{aplScan}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(a,k,f="+") {
-if (is.vector(a)) 
-    return(aplRDV(a,f))
-ff<-if (is.function(f)) f else match.fun(f)
-sa<-aplShape(a); ra<-aplRank(a); na<-prod(sa)
-sz<-sa[(1:ra)[-k]]; z<-array(0,sz); rz<-aplRank(z); nz<-prod(sz)
-z<-.C("aplReduceC",list(ff),as.double(a),as.integer(k),as.integer(length(k)),as.integer(na),
-    as.integer(sa),as.integer(ra),as.integer(nz),as.integer(sz),as.integer(rz),as.double(z))
-return(array(z[[11]],sz))
-  }
+aplReduce(array(1:27,c(3,3,3)),1)
+aplReduce(array(1:27,c(3,3,3)),2,"*")
+aplReduce(array(1:27,c(3,3,3)),3,"-")
 }
 \keyword{ manip }

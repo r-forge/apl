@@ -4,26 +4,16 @@
 APL Ravel
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Reshapes an array or a matrix into a vector
 }
 \usage{
 aplRavel(a)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{
-%%     ~~Describe \code{a} here~~
-}
+\item{a}{an array or a matrix}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+This function takes an array or a matrix and returns a vector.  The order of the elements will follow default R rule of column major order.
 }
 \references{
 G. Helzer. (1989):
@@ -32,21 +22,8 @@ G. Helzer. (1989):
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(a) as.vector(a)
+aplRavel(array(1:27,c(3,9)))
+aplRavel(matrix(1:27,9))
 }
 \keyword{ manip }

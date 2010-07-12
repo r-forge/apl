@@ -4,7 +4,7 @@
 APL Transpose
 }
 \description{
-reverse the order of the dimensions.
+Reverse the order of the dimensions.
 }
 \usage{
 aplTranspose(a, x = rev(1:aplRank(a)))
@@ -32,6 +32,7 @@ G. Helzer. (1989):
 
 %\seealso{
 %}
-%\examples{
-%}
+\examples{
+aplTranspose(array(1:48,c(3,4,4)))
+}
 \keyword{ manip }

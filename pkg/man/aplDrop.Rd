@@ -4,33 +4,17 @@
 APL Drop
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Remove the first (or last) a elements of x according to sign of a
 }
 \usage{
 aplDrop(a, x, drop = FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{
-%%     ~~Describe \code{a} here~~
+  \item{a}{}
+  \item{x}{}
+  \item{drop}{ Boolean flag to specify whether to convert the result into a vector when it only has one column.  Default if FALSE.}
 }
-  \item{x}{
-%%     ~~Describe \code{x} here~~
-}
-  \item{drop}{
-%%     ~~Describe \code{drop} here~~
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
+
 \references{
 G. Helzer. (1989):
 \emph{An Encyclopedia of APL}, second edition, I-APL LTD, St. Albans, G.B.
@@ -38,30 +22,11 @@ G. Helzer. (1989):
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+    \code{\link[apl]{aplTake}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(a,x,drop=FALSE) {
-sa<-aplShape(a); ra<-aplRank(a)
-y<-as.list(rep(0,ra))
-for (i in 1:ra) {
-    ss<-sa[i]; xx<-x[i]; sx<-ss-xx
-    if (xx >= 0) y[[i]]<-(xx+1):ss
-    if (xx < 0) y[[i]]<-1:sx
-    }
-return(aplSelect(a,y,drop))
-  }
+aplDrop()
 }
 \keyword{ manip }
