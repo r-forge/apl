@@ -43,7 +43,7 @@
 \iftx
 \usepackage[full]{textcomp}
 \usepackage{mathptmx}
-\usepackage[scaled=.90]{helvet} 
+\usepackage[scaled=.90]{helvet}
 \usepackage{courier}
 \def\myfont{\textsc{Times Roman}}
 \fi
@@ -106,14 +106,14 @@
 \newcommand{\tRc}[1]{\lstinline{#1}}
 \newcommand{\tAc}[1]{{\apl{#1}}}
 
-\lstloadlanguages{R} 
-\lstdefinelanguage{RPlus}[]{R}{% 
-morekeywords={acf,ar,arima,arima.sim,colMeans,colSums,is.na,is.null,%     
-mapply,ms,na.rm,nlmin,replicate,row.names,rowMeans,rowSums,seasonal,%     
-sys.time,system.time,ts.plot,which.max,which.min,as.vector,NULL},%  
+\lstloadlanguages{R}
+\lstdefinelanguage{RPlus}[]{R}{%
+morekeywords={acf,ar,arima,arima.sim,colMeans,colSums,is.na,is.null,%
+mapply,ms,na.rm,nlmin,replicate,row.names,rowMeans,rowSums,seasonal,%
+sys.time,system.time,ts.plot,which.max,which.min,as.vector,NULL},%
 deletekeywords={c},%
-alsoletter={.\%},% 
-alsoother={:_\$}} 
+alsoletter={.\%},%
+alsoother={:_\$}}
 \lstset{language=RPlus,%
 extendedchars=true,%
 basicstyle=\small\ttfamily,%
@@ -165,7 +165,7 @@ runtime. Also, the current version has no nested arrays.
 \tA\ was introduced by~\citet{iverson_62}. It is an array language, with many functions to manipulate multidimensional arrays. \tR\ also has multidimensional arrays, but far fewer functions to work with them.
 
 In \tR\ there are no scalars, there are vectors of length one. For a vector \tT{x}
-in \tR\ we have \tRc{dim(x)} equal to \tT{NULL} and \tRc{length(x)>0}. For an array, including a matrix, 
+in \tR\ we have \tRc{dim(x)} equal to \tT{NULL} and \tRc{length(x)>0}. For an array, including a matrix,
 we have \tRc{length(dim(x))>0}. \tA\ is an array
 language, which means everything is an array. For each array both the shape \tAc{\qrho A} and the rank
 \tAc{\qrho\qrho A} are defined. Scalars are arrays with shape equal to one, vectors are arrays with
@@ -175,11 +175,11 @@ In 1994 I coded most \tA\ array operations in \tT{XLISP-STAT}. The code is still
 between the \texttt{R} and Lisp versions, because \texttt{Lisp} and \tA\ both have
 \texttt{C}'s row-major ordering, while \tR\ (like \texttt{Matlab}) has \texttt{Fortran}'s
 column-major ordering in the array layout. The \tR\ version of
-\tA\ uses column-major ordering. 
+\tA\ uses column-major ordering.
 By slightly changing the two basic building blocks of our code, the \tRc{aplDecode()} and
 \tRc{aplEncode()} functions, it would be easy to choose between row-major
 and column-major layouts. But this would make it more complicated to use the code
-with the rest of \tR. 
+with the rest of \tR.
 
 Because of layout, the two arrays \tAc{A\qlarrow 3 3 3\qrho\qiota 27} and
 \tRc{array(1:27,rep(3,3))} are different.
@@ -188,7 +188,7 @@ But what is really helpful in linking the two environments is that
 ravelling an array is the inverse of reshaping a vector.
 
 Most of the functions in \tR\ are written with arrays of numbers in mind. Most of them will work for array with elements of type logical, and quite a few of them will also work for arrays of type character. We have to keep in mind, however, that \tA\ and \tR\ treat character arrays quite differently. In \tR\ we have \tRc{length("aa")} equal to
-1, because \tRc{"aa"} is a vector with as its single element the string \tRc{"aa"}. \tR\ has no 
+1, because \tRc{"aa"} is a vector with as its single element the string \tRc{"aa"}. \tR\ has no
 primitive character type, characters are just strings which happen to have only one character in them.
 In \tA\ strings themselves are vectors of characters, and \tAc{\qrho "aa"} is 2. In \tR\ we can say
 \tRc{a<-array("aa",c(2,2,2))}, but in \tA\ this gives a domain error. In \tA\ we can say \tAc{2 2 2\qrho"aa"},
@@ -196,7 +196,7 @@ which gives the same result as \tAc{2 2 2\qrho"a"} or \tAc{2 2 2\qrho'a'}.
 
 In this version of the code we have \emph{not} implemented the \emph{nested arrays} of \texttt{APL-2}.
 Nesting gives every array \tAc{A} not just a shape \tAc{\qrho A} and a rank \tAc{\qrho\qrho A},
-but also a depth. The depth of an array of numbers of characters is one, the depth 
+but also a depth. The depth of an array of numbers of characters is one, the depth
 of a nested array is the maximum depth of its elements.
 
 There are many dialects of \tA, and quite a few languages derived from \tA, such as \texttt{A+} and \texttt{J}.
@@ -209,7 +209,7 @@ Compress~\citep[p. 91--92]{apl2_88} is Replicate \tAc{L/R} in the special case t
 
 \subsection{Decode}
 \subsubsection{Definition}
-\emph{Decode}~\citep[p. 94]{apl2_88} The dyadic operator \tAc{L\qdtack R} is known as \emph{Base Value}~\citep[p. 17-21]{helzer_89} in \texttt{APL-I}. 
+\emph{Decode}~\citep[p. 94]{apl2_88} The dyadic operator \tAc{L\qdtack R} is known as \emph{Base Value}~\citep[p. 17-21]{helzer_89} in \texttt{APL-I}.
 
 If \tAc{L} is scalar and \tAc{R} is a vector, then \tAc{L\qdtack R} is the polynomial
 \(r_1x^{m-1}+r_{2}x^{m-2}+\cdots+r_m\) evaluated at \tAc{L}. This means that if
@@ -219,12 +219,12 @@ base-10 equivalent of the base-\tAc{L} number \tAc{R}.
 If the arguments \texttt{L} and \texttt{R} are vectors of the
 same length. In the array context, decode returns the index of element \lstinline{x[b]} in an array
 \lstinline{x} with \lstinline{dim(x)=a}. Obviously the \texttt{R} implementation, which uses
-colum-major ordering, will give results different from the \tA\ implementation. In \tA\ 
+colum-major ordering, will give results different from the \tA\ implementation. In \tA\
 the expression \tAc{3 3 3\qdtack 1 2 3} evaluates to 18, while \tRc{aplDecode(1:3,rep(3,3))} gives 22.
 \subsubsection{\tR\ code}\quad
 \begin{lstlisting}
 aplDecode<-function(ind,base) {
-    if (length(base) == 1) 
+    if (length(base) == 1)
         base<-array(base,aplShape(ind))
     b<-c(1,butLast(cumprod(base)))
     return(1+sum(b*(ind-1)))
@@ -234,6 +234,8 @@ aplDecode<-function(ind,base) {
 
 \subsection{Drop}\quad
 \subsubsection{Definition}
+
+A
 \subsubsection{\tR\ code}\quad
 \begin{lstlisting}
 aplDrop<-function(a,x,drop=FALSE) {
@@ -308,7 +310,7 @@ ra<-aplRank(a); rb<-aplRank(b)
 ia<-1:(ra-1); ib<-(ra-1)+(1:(rb-1))
 ff<-match.fun(f); gg<-match.fun(g)
 ns<-last(sa); nt<-first(sb)
-if (ns != nt) 
+if (ns != nt)
     stop("non-compatible array dimensions in aplInner")
 sz<-c(butLast(sa),butFirst(sb)); nz<-prod(sz)
 z<-array(0,sz)
@@ -348,27 +350,33 @@ return(z)
 
 \subsection{Member Of}\quad
 \subsubsection{Definition}
-
+aplMemberOf checks the membership of L in R, $L \in R$.  Result is object of same dimension as L with each of its element replaced by 1 or 0 corresponding to it exists or not in R.
 \subsubsection{\tR\ code}\quad
 \begin{lstlisting}
-aplMemberOf<-function(a,b) {
-    if (!identical(typeof(a),typeof(b)))
-        warning("Arguments of different types in aplMO")
-    arrTest(a); arrTest(b)
-    sa<-aplShape(a); sb<-aplShape(b)
-    na<-prod(sa); nb<-prod(sb)
-    z<-array(0,sa)
+aplMemberOf<-function (a, b)
+{
+    if (!identical(typeof(a), typeof(b)))
+        warning("Arguments of different types")
+    arrTest(a)
+    arrTest(b)
+    sa <- aplShape(a)
+    sb <- aplShape(b)
+    na <- prod(sa)
+    nb <- prod(sb)
+    z <- array(0, sa)
     for (i in 1:na) {
-        z[i]<-0; aa<-a[i]
-        for (j in 1:nb)
-            if (identical(aa,b[j])) z[i]<-1
-        }
-return(z)   
+        z[i] <- 0
+        aa <- a[i]
+        for (j in 1:nb) if (identical(aa, b[j]))
+            z[i] <- 1
+    }
+    return(z)
 }
 \end{lstlisting}
 
 \subsection{Outer Product}\quad
 \subsubsection{Definition}
+Outer product is generalization of cartesian product where user can specify function other than simple product to apply to all of the combination of elements in L and R. L maru.R.?????  Currently it is same as outer function in R. 
 \subsubsection{\tR\ code}\quad
 
 \begin{lstlisting}
@@ -377,6 +385,7 @@ aplOP<-function(x,y,f="*") return(outer(x,y,f))
 
 \subsection{Ravel}\quad
 \subsubsection{Definition}
+Ravel takes an array or a matrix and reshapes it into a vector. Currently it is equivalent to as.vector in R. ???? ,B
 \subsubsection{\tR\ code}\quad
 \begin{lstlisting}
 aplRV<-function(a) as.vector(a)
@@ -404,7 +413,7 @@ aplRDV<-function(x,f="+") {
 \end{lstlisting}
 \begin{lstlisting}
 aplReduce<-function(a,k,f="+") {
-if (is.vector(a)) 
+if (is.vector(a))
     return(aplRDV(a,f))
 sa<-aplShape(a); ra<-aplRank(a); na<-prod(sa)
 ia<-(1:ra)[-k]
@@ -416,7 +425,7 @@ for (i in 1:na) {
     jind<-aplDecode(ivec[-k],sz)
     z[jind]<-ff(z[jind],a[i])
     }
-return(z)   
+return(z)
 }
 \end{lstlisting}
 
@@ -490,15 +499,15 @@ aplRotate<-function(a,x,k) {
         ivec<-aplEncode(i,sz)
         xx<-x[aplDecode(ivec[-k],sx)]
         ak<-rep(0,sk)
-        for (j in 1:sk) {       
+        for (j in 1:sk) {
             jvec<-ivec; jvec[k]<-j
             ak[j]<-a[aplDecode(jvec,sz)]
-            }       
+            }
         bk<-aplRTV(ak,xx)
-        for (j in 1:sk) {       
+        for (j in 1:sk) {
             jvec<-ivec; jvec[k]<-j
             z[aplDecode(jvec,sz)]<-bk[j]
-            }       
+            }
     }
 return(z)
 }
@@ -538,10 +547,10 @@ sz<-sapply(x,length)
 z<-array(0,sz); nz<-prod(sz)
 for (i in 1:nz) {
     ivec<-aplEncode(i,sz)
-    jvec<-vector() 
+    jvec<-vector()
     for (j in 1:ra)
         jvec<-c(jvec,x[[j]][ivec[j]])
-    z[i]<-a[aplDecode(jvec,sa)]  
+    z[i]<-a[aplDecode(jvec,sa)]
     }
 if (drop) return(drop(z)) else return(z)
 }
@@ -579,32 +588,32 @@ return(aplSelect(a,y,drop))
 }
 \end{lstlisting}
 
-\subsection{Transpose} 
+\subsection{Transpose}
 \subsubsection{Definition}
 \texttt{APL} has both a monadic {\apl\qtran A} and a dyadic {\apl B\qtran A} transpose. This \texttt{APL} transpose has a somewhat tortuous relationship
-with \texttt{R}'s \texttt{aperm()}. 
+with \texttt{R}'s \texttt{aperm()}.
 
 The monadic \texttt{aplTranspose(a)} and
-\texttt{aperm(a)} are always the same, they reverse the order of the 
-dimensions.  
+\texttt{aperm(a)} are always the same, they reverse the order of the
+dimensions.
 
 If \lstinline{x} is a permutation
 of \lstinline{1:aplRank(a)}, then \lstinline{aperm(a,x)} is
-actually equal to \lstinline{aplTranspose(a,order(x))}. 
+actually equal to \lstinline{aplTranspose(a,order(x))}.
 For
 permutations we could consequently define
 \lstinline{aplTranspose(a,x)} simply as \lstinline{aperm(a,order(x))} (which would undoubtedly be more efficient as well).
 
 If \lstinline{x} is not
 a permutation, then \lstinline{aperm(a,x)} is undefined, but
-\lstinline{aplTranspose(a,x)} can still be defined in some 
-cases. 
+\lstinline{aplTranspose(a,x)} can still be defined in some
+cases.
 
 If \lstinline{x} has \lstinline{aplRank(a)} elements equal to
 one of \lstinline{1:m},  with each of \lstinline{1:m}
 occurring a least once, then \lstinline{aplTranspose(a,x)}
 has rank \lstinline{m}. For obvious reasons dyadic
-transpose is not used a great deal. 
+transpose is not used a great deal.
 
 \subsubsection{\tR\ code}\quad
 \begin{lstlisting}
