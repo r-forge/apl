@@ -1,0 +1,246 @@
+#include <R.h>
+#include <Rinternals.h>
+
+SEXP            APLDECODE(SEXP, SEXP);
+SEXP            APLENCODE(SEXP, SEXP);
+
+
+SEXP
+getListElement(SEXP list, char *str)
+{
+    SEXP            elmt = R_NilValue, names = getAttrib(list, R_NamesSymbol);
+    int             i;
+    for (i = 0; i < length(list); i++)
+        if (strcmp(CHAR(STRING_ELT(names, i)), str) == 0) {
+            elmt = VECTOR_ELT(list, i);
+            break;
+        }
+    return elmt;
+}
+
+
+SEXP
+APLDECODE( SEXP cell, SEXP dims )
+{
+    int             aux = 1, n = length(dims);
+    SEXP            ind;
+    PROTECT( ind = allocVector( INTSXP, 1 ) );
+    INTEGER( ind )[0] = 1;
+    for( int i = 0; i < n; i++ ) {
+        INTEGER( ind )[0] += aux * ( INTEGER( cell )[i] - 1 );
+        aux *= INTEGER(dims)[i];
+    }
+    UNPROTECT( 1 );
+    return (ind);
+}
+
+SEXP
+APLENCODE( SEXP ind, SEXP dims )
+{
+    int             n = length(dims), aux = INTEGER(ind)[0], pdim = 1;
+    SEXP            cell;
+    PROTECT( cell = allocVector( INTSXP, n ) );
+    for ( int i = 0; i < n - 1; i++ )
+        pdim *= INTEGER( dims )[i];
+    for ( int i = n - 1; i > 0; i-- ){
+        INTEGER( cell )[i] = ( aux - 1 ) / pdim;
+        aux -= pdim * INTEGER( cell )[i];
+        pdim /= INTEGER( dims )[i - 1];
+        INTEGER( cell )[i] += 1;
+    }
+    INTEGER( cell )[0] = aux;
+    UNPROTECT( 1 );
+    return cell;
+}
+
+SEXP
+APLSELECT( SEXP a, SEXP dima, SEXP list ) {
+   int            r = length (dima), lz = 1, dimzi, nProtect = 0;
+   SEXP           dimz, itel, cell, czll, nind, z;
+   PROTECT(dimz = allocVector (INTSXP, r));   nProtect++;
+   PROTECT(cell = allocVector (INTSXP, r));   nProtect++;
+   PROTECT(czll = allocVector (INTSXP, r));   nProtect++;
+   PROTECT(itel = allocVector (INTSXP, 1));   nProtect++;
+   PROTECT(nind = allocVector (INTSXP, 1));   nProtect++;
+   for( int i = 0; i < r; i++ ){
+       dimzi = length( VECTOR_ELT( list, i ) );
+       INTEGER( dimz )[i] = dimzi;
+       lz *= dimzi;
+   }
+   PROTECT( z = allocVector( REALSXP, lz ) );
+   nProtect++;
+   for( int i = 0; i < lz; i++ ){
+       INTEGER(itel)[0] = i + 1;
+       cell = APLENCODE (itel, dimz);
+       for (int j = 0; j < r; j++) {
+           INTEGER (czll)[j] = INTEGER (VECTOR_ELT (list, j))[INTEGER(cell)[j] - 1];
+       }
+       nind = APLDECODE( czll, dima );
+       REAL(z)[i] = REAL(a)[INTEGER(nind)[0] - 1];
+   }
+   UNPROTECT(nProtect);
+   return(z);
+}
+
+SEXP
+APLTRANSPOSE(SEXP a, SEXP x, SEXP sa, SEXP sz, SEXP rz)
+{
+    int i, j, na=1, nz=1, ra = length (sa), lsz = length( sz ), nProtected=0;
+    SEXP ivec, jvec, z, itel, nind;
+    for( i=0;i<ra ;i++){ na *= INTEGER( sa )[i]; }
+    for( i=0;i<lsz;i++){ nz *= INTEGER( sz )[i]; }
+    PROTECT(itel = allocVector( INTSXP,              1  ) ); ++nProtected;
+    PROTECT(nind = allocVector( INTSXP,              1  ) ); ++nProtected;
+    PROTECT(ivec = allocVector( INTSXP,  INTEGER(rz)[0] ) ); ++nProtected;
+    PROTECT(jvec = allocVector( INTSXP,             ra  ) ); ++nProtected;
+    PROTECT(z    = allocVector( REALSXP,            nz  ) ); ++nProtected;
+    for( i = 0; i < nz; i++ ){
+        INTEGER( itel )[0] = i + 1;
+        ivec = APLENCODE( itel, sz );
+        for( j = 0; j < ra; j++ ){
+            INTEGER( jvec )[j] = INTEGER( ivec )[INTEGER( x )[j] - 1];
+        }
+        nind = APLDECODE( jvec, sa );
+        REAL( z )[i] = REAL( a )[INTEGER(nind)[0] - 1];
+    }
+    UNPROTECT( nProtected );
+    return z;
+}
+
+SEXP
+APLREDUCE(SEXP f, SEXP a, SEXP k, SEXP sa, SEXP sz, SEXP env)
+{
+    int i, j, u, v, r, kk, na=1, nz=1, nProtected = 0;
+    int nk = length( k ), ra = length( sa ), rz = length( sz );
+    SEXP ivec, kvec, ind, z,itel, nind, R_fcall= R_NilValue;
+    SEXP Z = R_NilValue, A = R_NilValue;
+    for( i=0;i<ra;i++){ na *= INTEGER( sa )[i]; }
+    for( i=0;i<rz;i++){ nz *= INTEGER( sz )[i]; }
+    kk = ra-nk;
+    PROTECT(R_fcall= lang3(f, R_NilValue, R_NilValue)); ++nProtected;
+    PROTECT(Z   = allocVector( REALSXP,  1  ) ); ++nProtected;
+    PROTECT(A   = allocVector( REALSXP,  1  ) ); ++nProtected;
+    PROTECT(itel   = allocVector( INTSXP,  1  ) ); ++nProtected;
+    PROTECT(ivec   = allocVector( INTSXP,  ra ) ); ++nProtected;
+    PROTECT(kvec   = allocVector( INTSXP,  kk ) ); ++nProtected;
+    PROTECT(ind    = allocVector( INTSXP,  nz ) ); ++nProtected;
+    PROTECT(z      = allocVector( REALSXP, nz ) ); ++nProtected;
+    for( i = 0; i < nz; i++ ){
+        INTEGER(ind)[i] = 0;
+    }
+    for( i = 0; i < na; i++ ){
+        INTEGER( itel )[0] = i + 1;
+        ivec = APLENCODE( itel, sa );
+        u = 0;
+        for( j = 0; j < ra; j++ ){
+            r = 0;
+            for( v = 0; v < nk; v++ ){
+                if( j == ( INTEGER( k )[v] - 1 ) ) r = 1;
+            }
+            if( r == 0 ){
+                INTEGER( kvec )[u] = INTEGER( ivec )[j];
+                u += 1;
+            }
+        }
+        nind = APLDECODE( kvec, sz );
+        if ( INTEGER( ind )[INTEGER( nind )[0] - 1] == 0 ) {
+            REAL( z )[INTEGER( nind )[0] - 1] = REAL( a )[i];
+            INTEGER( ind )[INTEGER( nind )[0] - 1] = 1;
+        } else {
+            REAL( Z )[0] = REAL( z )[INTEGER( nind )[0] - 1];
+            REAL( A )[0] = REAL( a )[i];
+            SETCADR( R_fcall, Z );
+            SETCADDR( R_fcall, A );
+            REAL( z )[INTEGER( nind )[0] - 1] = REAL( eval( R_fcall, env ) )[0];
+        }
+    }
+    UNPROTECT( nProtected );
+    return z;
+}
+
+SEXP 
+APLSCAN( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP env )
+{
+    int i, sk, l, na=1, ra = length( sa ),nProtected=0;
+    for( i=0;i<ra ;i++ ){ na *= INTEGER( sa )[i]; }
+    SEXP ivec, z, itel, nind, Z, A,R_fcall=R_NilValue;
+    PROTECT( R_fcall = lang3( f, R_NilValue, R_NilValue ) );++nProtected;
+    PROTECT( itel = allocVector( INTSXP,    1  ) ); ++nProtected;
+    PROTECT( nind = allocVector( INTSXP,    1  ) ); ++nProtected;
+    PROTECT( Z   = allocVector( REALSXP,    1  ) ); ++nProtected;
+    PROTECT( A   = allocVector( REALSXP,    1  ) ); ++nProtected;
+    PROTECT( ivec   = allocVector( INTSXP,  ra ) ); ++nProtected;
+    PROTECT( z      = allocVector( REALSXP, na ) ); ++nProtected;
+    l = INTEGER( k )[0] - 1;
+    for( i = 0; i < na; i++ ){
+        INTEGER( itel )[0] = i + 1;
+        ivec = APLENCODE( itel, sa );
+        sk = INTEGER( ivec )[l];
+        if( sk == 1 ){
+             REAL( z )[i] = REAL( a )[i];
+        }else{
+            INTEGER( ivec )[l] -= 1;
+            nind = APLDECODE( ivec, sa );
+            REAL( Z )[0]=REAL( z )[INTEGER(nind)[0]-1];
+            REAL( A )[0]=REAL( a )[i];
+            SETCADR( R_fcall, Z );
+            SETCADDR( R_fcall, A );
+            REAL( z )[i] = REAL( eval( R_fcall, env ) )[0];
+        }
+    }
+    UNPROTECT( nProtected );
+    return z;
+}
+
+SEXP
+APLINNERPRODUCT(SEXP f, SEXP g, SEXP a, SEXP b, SEXP sa, SEXP sb, SEXP sz, SEXP ns, SEXP env)
+{
+    int i, j, u,ra = length( sa ),rb = length( sb ), rz = length( sz ) ,nz=1, nProtected=0;
+    SEXP ivec, jvec, kvec, z, A, B, Z, itel, k, l, t, R_fcall = R_NilValue, R_gcall = R_NilValue;
+    for( i=0;i<rz;i++){ nz *= INTEGER( sz )[i]; }
+    PROTECT(R_fcall = lang3(f, R_NilValue, R_NilValue));++nProtected;
+    PROTECT(R_gcall = lang3(g, R_NilValue, R_NilValue));++nProtected;
+    PROTECT( itel = allocVector( INTSXP,    1  ) ); ++nProtected;
+    PROTECT( k = allocVector( INTSXP,    1  ) ); ++nProtected;
+    PROTECT( l = allocVector( INTSXP,    1  ) ); ++nProtected;
+    PROTECT(ivec   = allocVector( INTSXP,  rz ) ); ++nProtected;
+    PROTECT(jvec   = allocVector( INTSXP,  ra ) ); ++nProtected;
+    PROTECT(kvec   = allocVector( INTSXP,  rb ) ); ++nProtected;
+    PROTECT(z      = allocVector( REALSXP, nz ) ); ++nProtected;
+    PROTECT( t   = allocVector( REALSXP,    1  ) ); ++nProtected;
+    PROTECT( Z   = allocVector( REALSXP,    1  ) ); ++nProtected;
+    PROTECT( B   = allocVector( REALSXP,    1  ) ); ++nProtected;
+    PROTECT( A   = allocVector( REALSXP,    1  ) ); ++nProtected;
+    for( i = 0; i < nz; i++ ){
+        INTEGER( itel )[0] = i + 1;
+        ivec = APLENCODE( itel, sz );
+        for( j = 0; j < INTEGER( ns )[0]; j++ ){
+            for( u = 0; u < ra - 1; u++ ){
+                INTEGER( jvec )[u] = INTEGER( ivec )[u];
+            }
+            INTEGER( jvec )[ra - 1] = j + 1;
+            k = APLDECODE( jvec, sa );
+            for( u = 1; u < rb; u++ ){
+                INTEGER( kvec )[u] = INTEGER( ivec )[ra + u - 2];
+            }
+            INTEGER( kvec )[0] = j + 1;
+            l = APLDECODE( kvec,sb );
+            REAL( A )[0] = REAL( a )[INTEGER(k)[0]-1];
+            REAL( B )[0] = REAL( b )[INTEGER(l)[0]-1];
+            SETCADR( R_fcall, A );
+            SETCADDR( R_fcall, B );
+            REAL( t )[0] = REAL( eval( R_fcall, env ) )[0];
+            if( j == 0 ){ 
+                REAL( z )[i] = REAL(t)[0];
+            } else {
+                REAL( Z )[0] = REAL( z )[i];
+                SETCADR( R_gcall, t );
+                SETCADDR( R_gcall, Z );
+                REAL( z )[i] = REAL( eval( R_fcall, env ) )[0];
+            }
+        }
+    }
+    UNPROTECT( nProtected );
+    return z;
+}
+
