@@ -4,32 +4,18 @@
 APL Select
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Selects elemets from an array
 }
 \usage{
 aplSelect(a, x, drop = FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{
-%%     ~~Describe \code{a} here~~
-}
-  \item{x}{
-%%     ~~Describe \code{x} here~~
-}
-  \item{drop}{
-%%     ~~Describe \code{drop} here~~
-}
+  \item{a}{an array}
+  \item{x}{a vector, or a list of vector specifying the index of array to select from.}
+  \item{drop}{When set to TRUE, if only one column or row is selected, array information is dropped and a vector is returned.  Default is FALSE }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+This function is general index specification where elemets from a is selected as specified by the list x.
 }
 \references{
 G. Helzer. (1989):
@@ -38,27 +24,17 @@ G. Helzer. (1989):
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+    \code{\link[apl]{aplTake}}, 
+    \code{\link[apl]{aplDrop}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(a,x,drop=FALSE) {
-sa<-aplShape(a); ra<-aplRank(a)
-sz<-sapply(x,length); z<-array(0,sz); rz<-aplRank(z); nz<-prod(sz)
-z<-array(.C("aplSelectC",as.double(a),as.integer(sa),as.integer(ra),lapply(x,as.integer),
-    as.double(z),as.integer(sz),as.integer(rz),as.integer(nz))[[5]],sz)
-if (drop) return(drop(z)) else return(z)
-  }
+    a <- array( 1:24, c( 2, 3, 4 ) )
+    x <- list(2, 1:2, c( 1, 4 ))
+    print( a[2,1:2,c( 1, 4 )] )
+    print( aplSelect( a, x ) )
+    x[[1]] <- c( 2, 2 )
+    print( a[c( 2, 2 ), 1:2, c( 1, 4 )] )
+    print( aplSelect( a, x ) )
 }
 \keyword{ manip }
