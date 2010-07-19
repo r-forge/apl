@@ -229,7 +229,7 @@ APLINNERPRODUCT(SEXP f, SEXP g, SEXP a, SEXP b, SEXP sa, SEXP sb, SEXP sz, SEXP 
                 REAL( Z )[0] = REAL( z )[i];
                 SETCADR( R_gcall, t );
                 SETCADDR( R_gcall, Z );
-                REAL( z )[i] = REAL( eval( R_fcall, env ) )[0];
+                REAL( z )[i] = REAL( eval( R_gcall, env ) )[0];
             }
         }
     }
