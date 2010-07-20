@@ -4,33 +4,17 @@
 APL Take
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Takes the elements out of an array
 }
 \usage{
 aplTake(a, x, drop = FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{
-%%     ~~Describe \code{a} here~~
+  \item{a}{an array}
+  \item{x}{a vector of integers with length same as dimension of a.  Positive integer specifies number of elements from the head to extract, negative integer specifies number of elemets to leave thus all the other elemets that is not specifed by the negative integer will be returned.  0 will return empty value.}
+  \item{drop}{ Boolean flag to specify whether to convert the result into a vector when it only has one column.  Default if FALSE.}
 }
-  \item{x}{
-%%     ~~Describe \code{x} here~~
-}
-  \item{drop}{
-%%     ~~Describe \code{drop} here~~
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
+
 \references{
 G. Helzer. (1989):
 \emph{An Encyclopedia of APL}, second edition, I-APL LTD, St. Albans, G.B.
@@ -38,30 +22,13 @@ G. Helzer. (1989):
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+    \code{\link[apl]{aplDrop}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+a<-array(1:24,c(2,3,4))
+aplTake(a, c(1,1,2))
 
-## The function is currently defined as
-function(a,x,drop=FALSE) {
-sa<-aplShape(a); ra<-aplRank(a)
-y<-as.list(rep(0,ra))
-for (i in 1:ra) {
-    ss<-sa[i]; xx<-x[i]; sx<-ss-xx
-    if (xx > 0) y[[i]]<-1:xx
-    if (xx < 0) y[[i]]<-(sx+1):ss
-    }
-return(aplSelect(a,y,drop))
-  }
 }
 \keyword{ manip }

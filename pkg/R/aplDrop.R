@@ -5,7 +5,7 @@ aplDrop <- function( a, x, drop = FALSE )
     if( ra != length( x ) ){
        stop( "Dimension error" );
     }
-    if( any(sa <= x ) ){
+    if( any(sa <= abs( x ) ) ){
        stop( "Cannot drop more than the maximum dimension." );
     }
     for( i in 1:ra ){

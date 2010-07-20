@@ -1,5 +1,6 @@
 \name{aplScan}
 \alias{aplScan}
+\alias{aplSCV}
 \title{
 APL Scan
 }

@@ -1,5 +1,6 @@
 \name{aplReduce}
 \alias{aplReduce}
+\alias{aplRDV}
 \title{
 APL Reduce
 }

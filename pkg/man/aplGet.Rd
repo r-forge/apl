@@ -4,29 +4,14 @@
 APL Get
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Gets an element of an array
 }
 \usage{
 aplGet(a, cell)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{
-%%     ~~Describe \code{a} here~~
-}
-  \item{cell}{
-%%     ~~Describe \code{cell} here~~
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  \item{a}{an array}
+  \item{cell}{indicies of cell to get the value from.  Length of indices must match the dimension of the array.}
 }
 \references{
 G. Helzer. (1989):
@@ -35,25 +20,12 @@ G. Helzer. (1989):
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+    \code{\link[apl]{aplSet}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(a,cell) {
-dims<-dim(a); n<-length(dims); b<-0
-if (any(cell>dims) || any(cell<1)) stop("No such cell")
-return(a[aplDecode(cell,dims)])
-  }
+a<-array(1:24,c(2,3,4))
+aplGet(a,c(1,2,4))
+a[1,2,4]
 }
 \keyword{ manip }
