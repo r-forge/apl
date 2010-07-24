@@ -4,7 +4,7 @@
 #exportMethods(
 #      "methodname"
 #)
-
+useDynLib(apl)
 export(
 aplCRV,
 aplDecode,
@@ -14,7 +14,6 @@ aplExpand,
 aplEXV,
 aplGet,
 aplInnerProduct,
-aplIPV,
 aplJoin,
 aplMemberOf,
 aplOuterProduct,
