@@ -42,15 +42,17 @@ aplencode( int* cell, int* dims, int* n, int* ind)
 SEXP
 APLDECODE( SEXP cell, SEXP dims )
 {
-    int  i, aux = 1, n = length( dims ), nProtected = 0; 
+    int n = length( dims ), nProtected = 0; 
+    int DIMS[n], CELL[n], IND;
     SEXP ind;
+    for( int i = 0; i < n; i++ ){
+       DIMS[i] = INTEGER( dims )[i];
+       CELL[i] = INTEGER( cell )[i];
+    }
     PROTECT( ind = allocVector( INTSXP, 1 ) ); ++nProtected;
     INTEGER( ind )[0] = 1;
-    //#pragma omp parallel for default(shared) private(i) schedule(dynamic)
-    for( i = 0; i < n; i++ ) {
-        INTEGER( ind )[0] += aux * ( INTEGER( cell )[i] - 1 );
-        aux *= INTEGER( dims )[i];
-    }
+    (void) apldecode (CELL, DIMS, &n, &IND);
+    INTEGER(ind)[0] = IND;
     UNPROTECT( nProtected );
     return ind;
 } 
@@ -58,19 +60,17 @@ APLDECODE( SEXP cell, SEXP dims )
 SEXP
 APLENCODE( SEXP ind, SEXP dims )
 {
-    int  n = length( dims ), aux = INTEGER( ind )[0], pdim = 1, nProtected = 0;
+    int  n = length( dims ), aux = INTEGER( ind )[0], nProtected = 0;
+    int  CELL[n], DIMS[n];
     SEXP cell;
     PROTECT( cell = allocVector( INTSXP, n ) ); ++nProtected;
-    for( int i = 0; i < n - 1; i++ ){
-        pdim *= INTEGER( dims )[i];
+    for( int i = 0; i < n; i++ ){
+       DIMS[i] = INTEGER( dims )[i];
     }
-    for( int i = n - 1; i > 0; i-- ){
-        INTEGER( cell )[i] = ( aux - 1 ) / pdim;
-        aux -= pdim * INTEGER( cell )[i];
-        pdim /= INTEGER( dims )[i - 1];
-        INTEGER( cell )[i] += 1;
+    (void) aplencode( CELL, DIMS, &n, &aux ); 
+    for( int i = 0; i < n; i++ ){
+       INTEGER(cell)[i] = CELL[i];
     }
-    INTEGER( cell )[0] = aux;
     UNPROTECT( nProtected );
     return cell;
 }
