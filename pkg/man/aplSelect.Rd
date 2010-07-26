@@ -7,7 +7,7 @@ APL Select
 Selects elemets from an array
 }
 \usage{
-aplSelect(a, x, drop = FALSE)
+aplSelect(a, x, drop = TRUE)
 }
 \arguments{
   \item{a}{an array}

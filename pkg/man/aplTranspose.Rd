@@ -11,7 +11,7 @@ aplTranspose(a, x = rev(1:aplRank(a)))
 }
 \arguments{
   \item{a}{an array}
-  \item{x}{}
+  \item{x}{index}
 }
 \details{
 The monadic aplTranspose(a) and aperm(a) are always the same, they reverse the order of the dimensions.

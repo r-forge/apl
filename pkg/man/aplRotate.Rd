@@ -1,5 +1,6 @@
 \name{aplRotate}
 \alias{aplRotate}
+\alias{aplRTV}
 \title{
 APL Rotate
 }
