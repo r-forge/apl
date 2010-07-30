@@ -5,77 +5,35 @@
 APL Rotate
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Rotates an array or a vector 
 }
 \usage{
 aplRotate(a, x, k)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{a}{
-%%     ~~Describe \code{a} here~~
+  \item{a}{an array or a vector}
+  \item{x}{When a is an array this will not be used.}
+  \item{k}{When a is a vector, if a positive number is specified, it represents the 
+number of elemets in the head of the vector to be placed at the end of the vector. 
+On the other hand when a negative number is specified, it represents the number of 
+elements from the tail of the vector to be placed at the head of the vector.}
 }
-  \item{x}{
-%%     ~~Describe \code{x} here~~
-}
-  \item{k}{
-%%     ~~Describe \code{k} here~~
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
+
+\details{}
+
 \references{
 G. Helzer. (1989):
 \emph{An Encyclopedia of APL}, second edition, I-APL LTD, St. Albans, G.B.
 }
+
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
+%\seealso{}
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(a,x,k) {
-    if (is.vector(a)) return(aplRTV(a,k))
-    sa<-aplShape(a); sx<-aplShape(x)
-    if (sx == 1) x<-array(x,sa[-k])
-    if (!identical(sa[-k],aplShape(x)))
-        stop("Index Error")
-    z<-array(0,sa); sz<-sa; nz<-prod(sz); sk<-sz[k]
-    for (i in 1:nz) {
-        ivec<-aplEncode(i,sz)
-        xx<-x[aplDecode(ivec[-k],sx)]
-        ak<-rep(0,sk)
-        for (j in 1:sk) {       
-            jvec<-ivec; jvec[k]<-j
-            ak[j]<-a[aplDecode(jvec,sz)]
-            }       
-        bk<-aplRTV(ak,xx)
-        for (j in 1:sk) {       
-            jvec<-ivec; jvec[k]<-j
-            z[aplDecode(jvec,sz)]<-bk[j]
-            }       
-    }
-return(z)
-  }
+aplRotate(1:5,1)
+aplRotate(1:5,-2)
 }
 \keyword{ manip }
