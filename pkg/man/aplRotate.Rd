@@ -10,17 +10,22 @@ Rotates an array or a vector
 \usage{
 aplRotate(a, x, k)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{a}{an array or a vector}
-  \item{x}{When a is an array this will not be used.}
+  \item{x}{an integer array of dimension size same as a without the kth dimension.
+A positive number specified represents the number of elemets in the head of the 
+array, in the direction of kth dimension, to be placed at the end of the array in kth direction.  
+Negative number represents
+the number of elements from the tail, in the direction of kth dimension, of the array 
+to be placed at the head of the array in the kth dimension.  
+When a is a vector this will not be used and one .}
   \item{k}{When a is a vector, if a positive number is specified, it represents the 
 number of elemets in the head of the vector to be placed at the end of the vector. 
 On the other hand when a negative number is specified, it represents the number of 
 elements from the tail of the vector to be placed at the head of the vector.}
 }
 
-\details{}
+%\details{}
 
 \references{
 G. Helzer. (1989):
@@ -35,5 +40,9 @@ G. Helzer. (1989):
 \examples{
 aplRotate(1:5,1)
 aplRotate(1:5,-2)
+a <- array(1:24,c(2,3,4))
+b <- array(1, c(2,4))
+aplRotate(a,b,2)
+aplRotate(a,-b,2)
 }
 \keyword{ manip }
