@@ -5,32 +5,21 @@
 APL Replicate
 }
 \description{
-Replication 
+Array Replication 
 }
 \usage{
 aplReplicate(x, y, k)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
-%%     ~~Describe \code{x} here~~
+  \item{x}{an array or a vector
 }
-  \item{y}{
-%%     ~~Describe \code{y} here~~
+  \item{y}{an integer vector of length the same length as the size of kth dimension of x
 }
-  \item{k}{
-%%     ~~Describe \code{k} here~~
-}
+  \item{k}{a direction to replicate x y times.  When x is a vector this is not used.}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+This function replicates elements of x sliced in the direction of k according to 
+the number specified by vector y.  
 }
 \references{
 G. Helzer. (1989):
@@ -39,36 +28,11 @@ G. Helzer. (1989):
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
-\note{
-%%  ~~further notes~~
-}
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
+%\seealso{}
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(x,y,k) {
-    if (is.vector(x)) return(aplCRV(x,y))
-    sx<-aplShape(x); sy<-aplShape(y); sk<-sx[k]
-    if (sy == 1) y<-rep(y,sk)
-    if (length(y) != sk)
-        stop("Length Error")
-    sz<-sx; sz[k]<-sum(y); nz<-prod(sz)
-    gg<-aplCRV(1:sk,y)
-    z<-array(0,sz)
-    for (i in 1:nz){
-        jvec<-aplEncode(i,sz)
-        jvec[k]<-gg[jvec[k]]
-        z[i]<-x[aplDecode(jvec,sx)]
-    }
-return(z)
-  }
+aplReplicate(1:5,c(1,2,3,4,5))
+a<-array(1:24,c(2,3,4))
+aplReplicate(a,c(2,1,1),2)
 }
 \keyword{ manip }
