@@ -2,7 +2,7 @@ aplRotate <- function( a, x, k )
 {
     if( is.vector( a ) ) { return( aplRTV( a, k ) );}
     sa <- aplShape( a ); sx <- aplShape( x );
-    if( sx == 1 ){ x <- array( x, sa[-k] ); }
+    if( aplRank( x ) == 1 ){ x <- array( x, sa[-k] ); }
     if( !identical( sa[-k], aplShape( x ) ) ){
         stop("Index Error")
     }
@@ -24,7 +24,7 @@ aplRotate <- function( a, x, k )
 return( z );
 }
 
-aplRTV <- function( a,k ) 
+aplRTV <- function( a, k ) 
 {
     n <- aplShape( a )
     if( k > 0 )
