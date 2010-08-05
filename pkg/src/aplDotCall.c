@@ -1,16 +1,16 @@
 #include <R.h>
 #include <Rinternals.h>
 
-SEXP APLDECODE( SEXP, SEXP );
-SEXP APLENCODE( SEXP, SEXP );
-SEXP APLSELECT( SEXP, SEXP, SEXP );
-SEXP APLTRANSPOSE( SEXP, SEXP, SEXP, SEXP, SEXP );
-SEXP APLSCAN( SEXP, SEXP, SEXP, SEXP, SEXP );
-SEXP APLREDUCE( SEXP, SEXP, SEXP, SEXP, SEXP, SEXP );
-SEXP APLINNERPRODUCT( SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP );
+SEXP CALLAPLDECODE( SEXP, SEXP );
+SEXP CALLAPLENCODE( SEXP, SEXP );
+SEXP CALLAPLSELECT( SEXP, SEXP, SEXP );
+SEXP CALLAPLTRANSPOSE( SEXP, SEXP, SEXP, SEXP, SEXP );
+SEXP CALLAPLSCAN( SEXP, SEXP, SEXP, SEXP, SEXP );
+SEXP CALLAPLREDUCE( SEXP, SEXP, SEXP, SEXP, SEXP, SEXP );
+SEXP CALLAPLINNERPRODUCT( SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP );
 
 SEXP
-APLDECODE( SEXP cell, SEXP dims )
+CALLAPLDECODE( SEXP cell, SEXP dims )
 {
     int  aux = 1, n = length( dims ), nProtected = 0;
     SEXP ind;
@@ -25,7 +25,7 @@ APLDECODE( SEXP cell, SEXP dims )
 }
 
 SEXP
-APLENCODE( SEXP ind, SEXP dims )
+CALLAPLENCODE( SEXP ind, SEXP dims )
 {
     int  n = length( dims ), aux = INTEGER( ind )[0], pdim = 1, nProtected = 0;
     SEXP cell;
@@ -45,7 +45,7 @@ APLENCODE( SEXP ind, SEXP dims )
 }
 
 SEXP
-APLSELECT( SEXP a, SEXP dima, SEXP list )
+CALLAPLSELECT( SEXP a, SEXP dima, SEXP list )
 {
    int  r = length( dima ), lz = 1, dimzi, nProtected = 0;
    SEXP dimz, itel, cell, czll, nind, z;
@@ -62,11 +62,11 @@ APLSELECT( SEXP a, SEXP dima, SEXP list )
    PROTECT( z = allocVector( REALSXP, lz ) );  ++nProtected;
    for( int i = 0; i < lz; i++ ){
        INTEGER( itel )[0] = i + 1;
-       cell = APLENCODE ( itel, dimz );
+       cell = CALLAPLENCODE ( itel, dimz );
        for ( int j = 0; j < r; j++ ) {
            INTEGER ( czll )[j] = INTEGER ( VECTOR_ELT( list, j ) )[INTEGER( cell )[j] - 1];
        }
-       nind = APLDECODE( czll, dima );
+       nind = CALLAPLDECODE( czll, dima );
        REAL( z )[i] = REAL( a )[INTEGER( nind )[0] - 1];
    }
    UNPROTECT( nProtected );
@@ -74,7 +74,7 @@ APLSELECT( SEXP a, SEXP dima, SEXP list )
 }
 
 SEXP
-APLTRANSPOSE( SEXP a, SEXP x, SEXP sa, SEXP sz, SEXP rz )
+CALLAPLTRANSPOSE( SEXP a, SEXP x, SEXP sa, SEXP sz, SEXP rz )
 {
     int  na = 1, nz = 1, ra = length( sa ), lsz = length( sz ), nProtected=0;
     SEXP ivec, jvec, z, itel, nind;
@@ -87,11 +87,11 @@ APLTRANSPOSE( SEXP a, SEXP x, SEXP sa, SEXP sz, SEXP rz )
     PROTECT( z    = allocVector( REALSXP,            nz  ) ); ++nProtected;
     for( int i = 0; i < nz; i++ ){
         INTEGER( itel )[0] = i + 1;
-        ivec = APLENCODE( itel, sz );
+        ivec = CALLAPLENCODE( itel, sz );
         for( int j = 0; j < ra; j++ ){
             INTEGER( jvec )[j] = INTEGER( ivec )[INTEGER( x )[j] - 1];
         }
-        nind = APLDECODE( jvec, sa );
+        nind = CALLAPLDECODE( jvec, sa );
         REAL( z )[i] = REAL( a )[INTEGER(nind)[0] - 1];
     }
     UNPROTECT( nProtected );
@@ -99,7 +99,7 @@ APLTRANSPOSE( SEXP a, SEXP x, SEXP sa, SEXP sz, SEXP rz )
 }
 
 SEXP
-APLREDUCE( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP sz, SEXP env )
+CALLAPLREDUCE( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP sz, SEXP env )
 {
     int u, r, kk, na = 1, nz = 1, nProtected = 0;
     int nk = length( k ), ra = length( sa ), rz = length( sz );
@@ -121,7 +121,7 @@ APLREDUCE( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP sz, SEXP env )
     }
     for( int i = 0; i < na; i++ ){
         INTEGER( itel )[0] = i + 1;
-        ivec = APLENCODE( itel, sa );
+        ivec = CALLAPLENCODE( itel, sa );
         u = 0;
         for( int j = 0; j < ra; j++ ){
             r = 0;
@@ -133,7 +133,7 @@ APLREDUCE( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP sz, SEXP env )
                 u += 1;
             }
         }
-        nind = APLDECODE( kvec, sz );
+        nind = CALLAPLDECODE( kvec, sz );
         if ( INTEGER( ind )[INTEGER( nind )[0] - 1] == 0 ) {
             REAL( z )[INTEGER( nind )[0] - 1] = REAL( a )[i];
             INTEGER( ind )[INTEGER( nind )[0] - 1] = 1;
@@ -150,7 +150,7 @@ APLREDUCE( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP sz, SEXP env )
 }
 
 SEXP 
-APLSCAN( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP env )
+CALLAPLSCAN( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP env )
 {
     int sk, l, na=1, ra = length( sa ),nProtected=0;
     for( int i = 0; i < ra; i++ ){ na *= INTEGER( sa )[i]; }
@@ -165,13 +165,13 @@ APLSCAN( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP env )
     l = INTEGER( k )[0] - 1;
     for( int i = 0; i < na; i++ ){
         INTEGER( itel )[0] = i + 1;
-        ivec = APLENCODE( itel, sa );
+        ivec = CALLAPLENCODE( itel, sa );
         sk = INTEGER( ivec )[l];
         if( sk == 1 ){
              REAL( z )[i] = REAL( a )[i];
         }else{
             INTEGER( ivec )[l] -= 1;
-            nind = APLDECODE( ivec, sa );
+            nind = CALLAPLDECODE( ivec, sa );
             REAL( Z )[0]=REAL( z )[INTEGER( nind )[0]-1];
             REAL( A )[0]=REAL( a )[i];
             SETCADR( R_fcall, Z );
@@ -184,7 +184,7 @@ APLSCAN( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP env )
 }
 
 SEXP
-APLINNERPRODUCT(SEXP f, SEXP g, SEXP a, SEXP b, SEXP sa, SEXP sb, SEXP sz, SEXP ns, SEXP env)
+CALLAPLINNERPRODUCT(SEXP f, SEXP g, SEXP a, SEXP b, SEXP sa, SEXP sb, SEXP sz, SEXP ns, SEXP env)
 {
     int nz = 1, nProtected = 0;
     int ra = length( sa ),rb = length( sb ), rz = length( sz );
@@ -206,18 +206,18 @@ APLINNERPRODUCT(SEXP f, SEXP g, SEXP a, SEXP b, SEXP sa, SEXP sb, SEXP sz, SEXP 
     PROTECT( A       = allocVector( REALSXP,         1  ) ); ++nProtected;
     for( int i = 0; i < nz; i++ ){
         INTEGER( itel )[0] = i + 1;
-        ivec = APLENCODE( itel, sz );
+        ivec = CALLAPLENCODE( itel, sz );
         for( int j = 0; j < INTEGER( ns )[0]; j++ ){
             for( int u = 0; u < ra - 1; u++ ){
                 INTEGER( jvec )[u] = INTEGER( ivec )[u];
             }
             INTEGER( jvec )[ra - 1] = j + 1;
-            k = APLDECODE( jvec, sa );
+            k = CALLAPLDECODE( jvec, sa );
             for( int u = 1; u < rb; u++ ){
                 INTEGER( kvec )[u] = INTEGER( ivec )[ra + u - 2];
             }
             INTEGER( kvec )[0] = j + 1;
-            l = APLDECODE( kvec,sb );
+            l = CALLAPLDECODE( kvec,sb );
             REAL( A )[0] = REAL( a )[INTEGER( k )[0]-1];
             REAL( B )[0] = REAL( b )[INTEGER( l )[0]-1];
             SETCADR( R_fcall, A );
