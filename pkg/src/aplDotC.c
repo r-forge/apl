@@ -27,7 +27,7 @@ cell[0] = aux;
 
 void aplSelectC(double *a, int *sa, int *ra, SEXP *list, double *z, int *sz, int *rz, int *nz)
 {
-int i, j, k, l = 0; 
+int i, j, k; 
 int ivec[*rz], jvec[*ra];
 for (i = 0; i < *nz; i++) {
 	k = i + 1;
@@ -58,8 +58,7 @@ for (i = 0; i < *nz; i++){
 void aplReduceC(char** funclist, double *a, int *k, int *nk, int *na, int *sa, int *ra, int *nz, int *sz, int *rz, double *z) {
 double f2_glue(double, double);
 double f2_comp(double (*)(),double,double);
-int i, j, h, u, v, r, l, m, kk = (*ra) - (*nk), ivec[*ra], kvec[kk], ind[*nz];
-double x, y;
+int i, j, u, v, r, m, kk = (*ra) - (*nk), ivec[*ra], kvec[kk], ind[*nz];
 for (i = 0; i < *nz; i++) ind[i] = 0;
 f2_char = funclist[0];
 for (i = 0; i < *na; i++){
@@ -133,7 +132,7 @@ for (i = 0; i < *nz; i++) {
 }
 
 double f2_glue(double x, double y){ 
-char *modes[2], *names[2], *values[1];
+char *modes[2], *values[1];
 void *args[2]; 
 double xx[1], yy[1], *result; 
 long lengths[2], nargs = (long)2,  nvals = (long)1;
@@ -148,7 +147,7 @@ return(result[0]);
 } 
 
 double g2_glue(double x, double y){ 
-char *modes[2], *names[2], *values[1];
+char *modes[2], *values[1];
 void *args[2]; 
 double xx[1], yy[1], *result; 
 long lengths[2], nargs = (long)2,  nvals = (long)1;
