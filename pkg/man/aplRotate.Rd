@@ -38,8 +38,8 @@ G. Helzer. (1989):
 
 %\seealso{}
 \examples{
-aplRotate(1:5,1)
-aplRotate(1:5,-2)
+aplRotate(a=1:5,k=1)
+aplRotate(a=1:5,k=-2)
 a <- array(1:24,c(2,3,4))
 b <- array(1, c(2,4))
 aplRotate(a,b,2)
