@@ -1,7 +1,7 @@
 \name{apl-package}
 \alias{apl-package}
 \alias{apl}
-\docType{package}
+\docType{package} 
 \title{
 APL functions in R
 }
