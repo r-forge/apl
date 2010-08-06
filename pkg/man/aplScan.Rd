@@ -29,9 +29,9 @@ G. Helzer. (1989):
     \code{\link[apl]{aplReduce}}
 }
 
-\examples{
- aplScan(array(1:27,c(3,3,3)),1)
- aplScan(array(1:27,c(3,3,3)),2,"*")
- aplScan(array(1:27,c(3,3,3)),3,"-")
-}
+%\examples{
+% aplScan(array(1:27,c(3,3,3)),1)
+% aplScan(array(1:27,c(3,3,3)),2,"*")
+% aplScan(array(1:27,c(3,3,3)),3,"-")
+%}
 \keyword{ manip }
