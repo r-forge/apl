@@ -109,10 +109,13 @@ APLTRANSPOSEP( SEXP a, SEXP x, SEXP sa, SEXP sz, SEXP rz )
 {
     int  itel, nind, na = 1, nz = 1, ra = length( sa ), lsz = length( sz ), nProtected=0;
     int  RZ = INTEGER(rz)[0];
-    int  ivec[RZ], jvec[ra], SA = INTEGER(sa)[0], SZ[lsz];
+    int  ivec[RZ], jvec[ra], SA[ra], SZ[lsz];
     SEXP z;
     #pragma omp parallel for reduction(*:na)
-    for( int i = 0; i < ra ; i++ ){ na *= INTEGER( sa )[i]; }
+    for( int i = 0; i < ra ; i++ ){
+        SA[i] = INTEGER(sa)[i];
+        na *= INTEGER( sa )[i]; 
+    }
     #pragma omp parallel for reduction(*:nz)
     for( int i = 0; i < lsz; i++ ){ 
         SZ[i] = INTEGER( sz )[i]; 
@@ -125,7 +128,7 @@ APLTRANSPOSEP( SEXP a, SEXP x, SEXP sa, SEXP sz, SEXP rz )
         for( int j = 0; j < ra; j++ ){
             jvec[j] = ivec[INTEGER( x )[j] - 1];
         }
-        (void) apldecode(jvec, &SA, &ra, &nind);
+        (void) apldecode(jvec, SA, &ra, &nind);
         REAL( z )[i] = REAL( a )[nind - 1];
     }
     UNPROTECT( nProtected );
@@ -193,10 +196,13 @@ APLREDUCEP( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP sz, SEXP env )
 SEXP 
 APLSCANP( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP env )
 {
-    int sk, l, na=1, itel, nind, SA, ra = length( sa ),nProtected=0;
-    int ivec[ra];
+    int sk, l, na=1, itel, nind, ra = length( sa ),nProtected=0;
+    int ivec[ra],SA[ra];
     #pragma omp parallel for reduction(*:na)
-    for( int i = 0; i < ra; i++ ){ na *= INTEGER( sa )[i]; }
+    for( int i = 0; i < ra; i++ ){ 
+        SA[i]=INTEGER( sa )[i];
+        na *= INTEGER( sa )[i]; 
+    }
     SEXP z,  Z, A, R_fcall = R_NilValue;
     PROTECT( R_fcall = lang3( f, R_NilValue, R_NilValue ) ); ++nProtected;
     PROTECT( Z       = allocVector( REALSXP,         1  ) ); ++nProtected;
@@ -206,13 +212,13 @@ APLSCANP( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP env )
     for( int i = 0; i < na; i++ ){
         itel = i + 1;
         SA = INTEGER(sa)[0];
-        (void) aplencode( ivec, &SA, &ra, &itel );
+        (void) aplencode( ivec, SA, &ra, &itel );
         sk = ivec[l];
         if( sk == 1 ){
              REAL( z )[i] = REAL( a )[i];
         }else{
             ivec[l] -= 1;
-            (void) apldecode( ivec, &SA, &ra, &nind );
+            (void) apldecode( ivec, SA, &ra, &nind );
             REAL( Z )[0]=REAL( z )[nind-1];
             REAL( A )[0]=REAL( a )[i];
             SETCADR( R_fcall, Z );
