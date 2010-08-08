@@ -197,7 +197,7 @@ SEXP
 APLSCANP( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP env )
 {
     int sk, l, na=1, itel, nind, ra = length( sa ),nProtected=0;
-    int ivec[ra],SA[ra];
+    int ivec[ra], SA[ra];
     #pragma omp parallel for reduction(*:na)
     for( int i = 0; i < ra; i++ ){ 
         SA[i]=INTEGER( sa )[i];
@@ -211,7 +211,6 @@ APLSCANP( SEXP f, SEXP a, SEXP k, SEXP sa, SEXP env )
     l = INTEGER( k )[0] - 1;
     for( int i = 0; i < na; i++ ){
         itel = i + 1;
-        SA = INTEGER(sa)[0];
         (void) aplencode( ivec, SA, &ra, &itel );
         sk = ivec[l];
         if( sk == 1 ){
