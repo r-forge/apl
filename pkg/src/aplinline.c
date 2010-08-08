@@ -38,7 +38,6 @@ aplencode( int* cell, int* dims, int* n, int* ind)
     }
     cell[0] = aux;
 }
-
 SEXP
 APLDECODE( SEXP cell, SEXP dims )
 {
