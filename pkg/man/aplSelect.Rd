@@ -22,7 +22,8 @@ G. Helzer. (1989):
 \emph{An Encyclopedia of APL}, second edition, I-APL LTD, St. Albans, G.B.
 }
 \author{
-  Jan de Leeuw \email{deleeuw@stat.ucla.edu}
+  Jan de Leeuw \email{deleeuw@stat.ucla.edu},
+Masanao Yajima \email{yajima@stat.ucla.edu}
 }
 \seealso{
     \code{\link[apl]{aplTake}}, 

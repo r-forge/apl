@@ -19,7 +19,6 @@ This function takes a vector and returns the original vector without the last el
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }
 
-
 \seealso{
     \code{\link[apl]{first}}, 
     \code{\link[apl]{last}}, 

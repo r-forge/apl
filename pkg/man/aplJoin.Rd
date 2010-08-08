@@ -26,9 +26,9 @@ G. Helzer. (1989):
 }
 
 
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
+%\seealso{
+%%% ~~objects to See Also as \code{\link{help}}, ~~~
+%}
 \examples{
 a<- array(1:6,c(2,3))
 b<- array(1:4,c(2,2))

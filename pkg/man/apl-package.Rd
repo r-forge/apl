@@ -20,7 +20,8 @@ LazyLoad: \tab yes\cr
 APL functions in R.
 }
 \author{
-  Jan de Leeuw \email{deleeuw@stat.ucla.edu}
+  Jan de Leeuw \email{deleeuw@stat.ucla.edu},
+Masanao Yajima \email{yajima@stat.ucla.edu}
 
 Maintainer: Masanao Yajima<yajima@stat.ucla.edu>
 }

@@ -13,9 +13,10 @@ butFirst(x)
 \details{
 This function takes a vector and returns the original vector without the first element.
 }
-%\references{
-%% ~put references to the literature/web site here ~
-%}
+\references{
+G. Helzer. (1989):
+\emph{An Encyclopedia of APL}, second edition, I-APL LTD, St. Albans, G.B.
+}
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }

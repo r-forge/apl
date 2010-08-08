@@ -16,6 +16,10 @@ unit(i, n)
 \details{
 This function takes a vector and checks if each element is within the range specified by 1 to n.
 }
+\references{
+G. Helzer. (1989):
+\emph{An Encyclopedia of APL}, second edition, I-APL LTD, St. Albans, G.B.
+}
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
 }

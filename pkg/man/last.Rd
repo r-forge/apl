@@ -14,8 +14,11 @@ last(x)
   \item{x}{a vector}
 }
 \details{
-
 This function takes a vector and returns only the last element.
+}
+\references{
+G. Helzer. (1989):
+\emph{An Encyclopedia of APL}, second edition, I-APL LTD, St. Albans, G.B.
 }
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu}
