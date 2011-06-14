@@ -4,6 +4,7 @@
 APL Decode
 }
 \description{
+Convert array indices into vector index.
 }
 \usage{
     aplDecode(cell, dims)

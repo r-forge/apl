@@ -4,7 +4,7 @@
 APL Encode
 }
 \description{
-Base-A representation of the value of B
+Converts vector index into array index.
 }
 \usage{
 aplEncode(ind, dims)
