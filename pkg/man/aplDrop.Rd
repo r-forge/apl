@@ -11,7 +11,7 @@ aplDrop(a, x, drop = FALSE)
 }
 \arguments{
   \item{a}{an array}
-  \item{x}{a vector of integers with length same as dimension of a.  Positive integer specifies number of elements from the head to drop, negative integer specifies number of elemets from the tail to drop.  0 will not drop any element.}
+  \item{x}{a vector of integers with length same as dimension of a.  Positive integer specifies number of elements from the head to drop, negative integer specifies number of elements from the tail to drop.  0 will not drop any element.}
   \item{drop}{ Boolean flag to specify whether to convert the result into a vector when it only has one column.  Default if FALSE.}
 }
 

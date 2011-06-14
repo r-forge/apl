@@ -4,7 +4,7 @@
 APL Select
 }
 \description{
-Selects elemets from an array
+Selects elements from an array
 }
 \usage{
 aplSelect(a, x, drop = TRUE)
@@ -15,7 +15,7 @@ aplSelect(a, x, drop = TRUE)
   \item{drop}{When set to TRUE, if only one column or row is selected, array information is dropped and a vector is returned.  Default is FALSE }
 }
 \details{
-This function is general index specification where elemets from a is selected as specified by the list x.
+This function is general index specification where elements from a is selected as specified by the list x.
 }
 \references{
 G. Helzer. (1989):
@@ -23,7 +23,7 @@ G. Helzer. (1989):
 }
 \author{
   Jan de Leeuw \email{deleeuw@stat.ucla.edu},
-Masanao Yajima \email{yajima@stat.ucla.edu}
+  Masanao Yajima \email{yajima@stat.ucla.edu}
 }
 \seealso{
     \code{\link[apl]{aplTake}}, 

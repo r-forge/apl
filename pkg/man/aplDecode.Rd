@@ -10,19 +10,13 @@ APL Decode
 }
 
 \arguments{
-  \item{cell}{}
-  \item{dims}{}
+  \item{cell}{integer vector of length m, where 1<= cell[i]<=dims[i].}
+  \item{dims}{integer vector of length m.}
 }
 \details{
-If cell is scalar and dims is a vector, then LR is the polynomial 
-evaluated at L. This means that if the ri are nonnegative integers less than L, then
-LR gives the base-10 equivalent of the base-L number R.
+  aplDecode(x,y) returns an integer k such that a[k] is theelement with index vector x in an m-array in R with dim(a) equalto y.
 
-If the arguments cell and dims are vectors of the same length. In the array context,
-decode returns the index of element x[b] in an array x with dim(x)=a. Obviously
-the R implementation, which uses colum-major ordering, will give results different
-from the APL implementation. In APL the expression 3 3 31 2 3 evaluates to 18,
-while aplDecode(1:3,rep(3,3)) gives 22.
+The R implementation, which uses column-major ordering, will give results different from the APL implementation. In APL the expression 3 3 31 2 3 evaluates to 18, while aplDecode(1:3,rep(3,3)) gives 22.
 }
 \references{
 G. Helzer. (1989):
@@ -37,6 +31,6 @@ G. Helzer. (1989):
     \code{\link[apl]{aplEncode}}
 }
 \examples{
-
+sapply(1:12,function(x) aplDecode(aplEncode(x,c(2,2,3)),c(2,2,3)))
 }
 \keyword{ manip }

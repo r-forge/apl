@@ -1,6 +1,5 @@
 \name{first}
 \alias{first}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 First element in a vector   
 }

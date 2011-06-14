@@ -4,14 +4,14 @@
 APL Get
 }
 \description{
-Gets an element of an array
+Get elements of an array
 }
 \usage{
 aplGet(a, cell)
 }
 \arguments{
   \item{a}{an array}
-  \item{cell}{indicies of cell to get the value from.  Length of indices must match the dimension of the array.}
+  \item{cell}{indices of cell to get the value from.  Length of indices must match the dimension of the array.}
 }
 \references{
 G. Helzer. (1989):

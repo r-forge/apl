@@ -11,7 +11,7 @@ aplMemberOf(a, b)
 }
 \arguments{
   \item{a}{an array or a matrix that gets checked whether each of its member is in b.}
-  \item{b}{a reference array or matrix to check the membeship of a.}
+  \item{b}{a reference array or matrix to check the membership of a.}
 }
 \details{
 Each member of a is checked if it exists in b.  Result is an object with same dimension as a with each element replaced by 1 or 0, corresponding to if the member at that location in original matrix exists (1) or not (0).

@@ -18,8 +18,7 @@ aplReplicate(x, y, k)
   \item{k}{a direction to replicate x y times.  When x is a vector this is not used.}
 }
 \details{
-This function replicates elements of x sliced in the direction of k according to 
-the number specified by vector y.  
+This function replicates elements of x sliced in the direction of k according to the number specified by vector y.  
 }
 \references{
 G. Helzer. (1989):

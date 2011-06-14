@@ -30,10 +30,7 @@ G. Helzer. (1989):
 \emph{An Encyclopedia of APL}, second edition, I-APL LTD, St. Albans, G.B.
 }
 \keyword{ package }
-%\seealso{
-%~~ Optional links to other man pages, e.g. ~~
-%~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-%}
+
 %\examples{
 %~~ simple examples of the most important functions ~~
 %}

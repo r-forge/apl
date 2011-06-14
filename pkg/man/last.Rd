@@ -1,6 +1,5 @@
 \name{last}
 \alias{last}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Last element in a vector   
 }
