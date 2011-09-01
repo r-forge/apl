@@ -10,11 +10,11 @@ Reshape a vector, an array, or a matrix.
 aplReshape(a, d)
 }
 \arguments{
-  \item{a}{ a vector, an array, or a matrix }
-  \item{d}{ a vector of dimension size to reshape a }
+  \item{a}{ A vector, an array, or a matrix. }
+  \item{d}{ A vector of dimension size to reshape a. }
 }
 \details{
-Reshape will convert a into an array with dimension specified by d.
+Reshape will convert $a$ into an array with dimension specified by $d$.
 }
 \references{
 G. Helzer. (1989):

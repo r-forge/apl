@@ -10,7 +10,7 @@ Returns the first element in a vector.
 first(x)
 }
 \arguments{
-  \item{x}{a vector}
+  \item{x}{A vector.}
 }
 \details{
 This function takes a vector and returns only the first element.

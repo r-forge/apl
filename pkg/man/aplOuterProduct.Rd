@@ -10,13 +10,13 @@ Perform general outer product.
 aplOuterProduct(x, y, f = "*")
 }
 \arguments{
-  \item{x}{ an array}
-  \item{y}{ an array}
-  \item{f}{ a function that takes 2 parameters }
+  \item{x}{ An array.}
+  \item{y}{ An array.}
+  \item{f}{ A function that takes 2 objects as parameters. }
 }
 
 \details{ 
-This function evaluates the function f for each combination of the elements in array x and y.
+This function evaluates the function $f$ for each combination of the elements inan array $x$ and an array $y$.
 }
 
 \references{

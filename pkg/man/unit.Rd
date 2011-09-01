@@ -10,11 +10,11 @@ Function to check if a unit is within a range.
 unit(i, n)
 }
 \arguments{
-  \item{i}{a vector to check}
-  \item{n}{maximum of the range}
+  \item{i}{A vector to check.}
+  \item{n}{Maximum of the range.}
 }
 \details{
-This function takes a vector and checks if each element is within the range specified by 1 to n.
+This function takes a vector and checks if each element is within the range specified by 1 to $n$.
 }
 \references{
 G. Helzer. (1989):

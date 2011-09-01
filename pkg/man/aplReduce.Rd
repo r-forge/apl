@@ -11,12 +11,12 @@ Application of function f across a in dimension specified by k.
 aplReduce(a, k, f = "+")
 }
 \arguments{
-  \item{a}{a vector, an array, or a matrix}
-  \item{k}{dimension to apply the function f.}
-  \item{f}{function to apply.  Default is sum.}
+  \item{a}{A vector, an array, or a matrix.}
+  \item{k}{A dimension to apply the function f.}
+  \item{f}{A function to apply.  Default is sum.}
 }
 \details{
-Function f is applied accross dimension specified by k.  This function is similar to aplScan.  The output is same as the last element of aplScan.
+Function $f$ is applied accross dimension specified by $k$.  This function is similar to aplScan.  The output is same as the last element of aplScan.
 }
 \references{
 G. Helzer. (1989):

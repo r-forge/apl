@@ -11,12 +11,12 @@ Running application of function f across a in dimension specified by k.
 aplScan(a, k, f = "+")
 }
 \arguments{
-  \item{a}{a vector, an array, or a matrix}
-  \item{k}{dimension to apply the function f.  If f is "+" and k is 1 then running sum for each column is calculated.}
-  \item{f}{function to apply.  Default is sum.}
+  \item{a}{A vector, an array, or a matrix.}
+  \item{k}{A integer specifying a dimension to apply the function $f$.  If $f$ is "+" and $k$ is 1 then running sum for each column is calculated.}
+  \item{f}{A function to apply.  The default is sum "+" .}
 }
 \details{
-When f is sum aplScan is array version of cumsum.  It applies the function f sequentially in dimension specified by k.
+When $f$ is sum aplScan is array version of cumsum.  It applies the function $f$ sequentially in dimension specified by $k$.
 }
 \references{
 G. Helzer. (1989):

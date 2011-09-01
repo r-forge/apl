@@ -10,7 +10,7 @@ Returns the dimension of an array.
 aplRank(a)
 }
 \arguments{
-  \item{a}{an array}
+  \item{a}{An array.}
 }
 \details{
 This function returns the dimension of an array.

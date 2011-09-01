@@ -10,9 +10,9 @@ Number of components in each dimension of an array.
 aplShape(a)
 }
 \arguments{
-  \item{a}{an array}
+  \item{a}{An array.}
 }
-\details{This function returns the size of each dimensions of an array.}
+\details{This function returns sizes of each dimensions of given array.}
 
 \references{
 G. Helzer. (1989):

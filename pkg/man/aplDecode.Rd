@@ -11,11 +11,13 @@ Convert array indices into vector index.
 }
 
 \arguments{
-  \item{cell}{integer vector of length m, where 1<= cell[i]<=dims[i].}
-  \item{dims}{integer vector of length m.}
+  \item{cell}{A integer vector of length m, where 1<= cell[i]<=dims[i].}
+  \item{dims}{A integer vector of length m.}
 }
 \details{
-  aplDecode(x,y) returns an integer k such that a[k] is theelement with index vector x in an m-array in R with dim(a) equalto y.
+  aplDecode(x,y) returns an integer k such that a[k] is the
+element with index vector x in an m-array in R with dim(a) equal
+to y.
 
 The R implementation, which uses column-major ordering, will give results different from the APL implementation. In APL the expression 3 3 31 2 3 evaluates to 18, while aplDecode(1:3,rep(3,3)) gives 22.
 }

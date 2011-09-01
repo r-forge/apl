@@ -10,9 +10,9 @@ Selects elements from an array
 aplSelect(a, x, drop = TRUE)
 }
 \arguments{
-  \item{a}{an array}
-  \item{x}{a vector, or a list of vector specifying the index of array to select from.}
-  \item{drop}{When set to TRUE, if only one column or row is selected, array information is dropped and a vector is returned.  Default is FALSE }
+  \item{a}{An array.}
+  \item{x}{A vector, or a list of vector specifying the index of array to select from.}
+  \item{drop}{When set to TRUE, if only one column or row is selected, array information is dropped and a vector is returned.  Default is FALSE. }
 }
 \details{
 This function is general index specification where elements from a is selected as specified by the list x.

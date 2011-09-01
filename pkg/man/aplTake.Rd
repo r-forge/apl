@@ -4,14 +4,14 @@
 APL Take
 }
 \description{
-Takes the elements out of an array
+Takes elements out of an array
 }
 \usage{
 aplTake(a, x, drop = FALSE)
 }
 \arguments{
-  \item{a}{an array}
-  \item{x}{a vector of integers with length same as dimension of a.  Positive integer specifies number of elements from the head to extract; negative integer specifies number of elements to leave.  
+  \item{a}{An array.}
+  \item{x}{A vector of integers with length same as dimension of $a$.  Positive integer specifies number of elements from the head to extract; negative integer specifies number of elements to leave.  
 All the other elements that are not specified by the negative integer will be returned.  0 will return empty value.}
   \item{drop}{ Boolean flag to specify whether to convert the result into a vector when it only has one column.  Default if FALSE.}
 }

@@ -11,11 +11,11 @@ Rotates an array or a vector
 aplRotate(a, x, k)
 }
 \arguments{
-  \item{a}{an array or a vector}
-  \item{x}{an integer array of dimension size same as a without the kth dimension.
+  \item{a}{An array or a vector.}
+  \item{x}{An integer array of dimension size same as a without the kth dimension.
 A positive number specified represents the number of elements in the head of the array, in the direction of kth dimension, to be placed at the end of the array in kth direction.  
-Negative number represents the number of elements from the tail, in the direction of kth dimension, of the array to be placed at the head of the array in the kth dimension.  When a is a vector this will not be used and one .}
-  \item{k}{When a is a vector, if a positive number is specified, it represents the number of elements in the head of the vector to be placed at the end of the vector. 
+Negative number represents the number of elements from the tail, in the direction of $k$th dimension, of the array to be placed at the head of the array in the kth dimension.  When a is a vector this will not be used and one.}
+  \item{k}{When $a$ is a vector, if $a$ positive number is specified, it represents the number of elements in the head of the vector to be placed at the end of the vector. 
 On the other hand when a negative number is specified, it represents the number of elements from the tail of the vector to be placed at the head of the vector.}
 }
 

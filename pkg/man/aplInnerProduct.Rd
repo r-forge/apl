@@ -1,7 +1,7 @@
 \name{aplInnerProduct}
 \alias{aplInnerProduct}
 \title{
-APL InnerProduct
+APL Inner Product
 }
 \description{
 Generalized inner product.
@@ -10,13 +10,13 @@ Generalized inner product.
 aplInnerProduct(a, b, f = "*", g = "+")
 }
 \arguments{
-  \item{a}{an array of dimension I * J * ... * K }
-  \item{b}{an array of dimension K * L * ... * M}
-  \item{f}{function to apply across.  Default is "*".}
-  \item{g}{function to apply within.  Default is "+".}
+  \item{a}{An array of dimension I * J * ... * K. }
+  \item{b}{An array of dimension K * L * ... * M.}
+  \item{f}{A function to apply across.  The default is multiplication "*".}
+  \item{g}{A function to apply within.  The default is addition "+".}
 }
 \details{
-This function is generalized version of array inner product \%*\% for multidimensional array.  Array a and b must have same size for the last and the first dimension.  By default it performs the usual inner product where each element of a and corresponding element of b is multiplied and the result is summed over.  But this operation can be generalized by specifying different function for f and g.
+This function is a generalized version of an array inner product \%*\% for multidimensional arrays.  An array $a$ and an array $b$ must have the same size for the last dimension of $a$ and for the first dimension of $b$.  By default, the function performs the usual inner product; each element of the array $a$ and corresponding element of the array $b$ is multiplied and the result is summed over.  This operation, however, can be generalized by specifying different function for the options $f$ and $g$.
 }
 \references{
 G. Helzer. (1989):
@@ -31,9 +31,9 @@ G. Helzer. (1989):
     \code{\link[apl]{aplOuterProduct}}
 }
 \examples{
-a <- matrix(1:9,3,3)
-b <- matrix(9:20,3,4)
-aplInnerProduct(a,b)
+a <- matrix( 1:9, 3, 3 )
+b <- matrix( 9:20, 3, 4 )
+aplInnerProduct( a, b )
 a%*%b
 }
 \keyword{ manip }

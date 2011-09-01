@@ -10,7 +10,7 @@ Reshapes an array or a matrix into a vector
 aplRavel(a)
 }
 \arguments{
-\item{a}{an array or a matrix}
+\item{a}{An array or a matrix.}
 }
 \details{
 This function takes an array or a matrix and returns a vector.  The order of the elements will follow default R rule of column major order.

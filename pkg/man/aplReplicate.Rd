@@ -11,11 +11,11 @@ Array Replication
 aplReplicate(x, y, k)
 }
 \arguments{
-  \item{x}{an array or a vector
+  \item{x}{An array or a vector.
+    }
+  \item{y}{An integer vector of length the same length as the size of kth dimension of x.
 }
-  \item{y}{an integer vector of length the same length as the size of kth dimension of x
-}
-  \item{k}{a direction to replicate x y times.  When x is a vector this is not used.}
+  \item{k}{A direction to replicate x y times.  When x is a vector this is not used.}
 }
 \details{
 This function replicates elements of x sliced in the direction of k according to the number specified by vector y.  

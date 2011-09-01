@@ -9,7 +9,7 @@ Returns everything but the last element in a vector.}
 butLast(x)
 }
 \arguments{
-  \item{x}{a vector}
+  \item{x}{A vector.}
 }
 \details{
 This function takes a vector and returns the original vector without the last element.

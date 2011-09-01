@@ -4,19 +4,19 @@
 APL Join
 }
 \description{
-Joins 2 arrays together along specified dimension.
+Joins two arrays together along specified dimension.
 }
 \usage{
 aplJoin(a, b, k)
 }
 \arguments{
-  \item{a}{an array}
-  \item{b}{an array}
-  \item{k}{a number specifying dimension to join a and b along.}
+  \item{a}{An array.}
+  \item{b}{An array.}
+  \item{k}{A integer specifying a dimension to join arrays $a$ and $b$ along.}
 }
 \details{
-Array a and b are joined along the dimension k.  
-If a is n by m array and b is k by j array to join a and b along 1st dimension, m must be same as j.  Similary to join along 2nd dimension, n must be same as k.
+Arrays $a$ and $b$ are joined along the dimension $k$.  
+If $a$ is n by m array and $b$ is k by j array to join $a$ and $b$ along first dimension, m must be same as j.  Similarly, to join along second dimension, n must be same as k.
 }
 \references{
 G. Helzer. (1989):

@@ -10,7 +10,7 @@ Returns the last element in a vector.
 last(x)
 }
 \arguments{
-  \item{x}{a vector}
+  \item{x}{A vector.}
 }
 \details{
 This function takes a vector and returns only the last element.

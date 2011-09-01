@@ -11,9 +11,9 @@ APL Expand
 aplExpand(x, y, axis = 1)
 }
 \arguments{
-  \item{x}{a array}
-  \item{y}{a array}
-  \item{axis}{axis}
+  \item{x}{An array.}
+  \item{y}{An array.}
+  \item{axis}{Axis.}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~

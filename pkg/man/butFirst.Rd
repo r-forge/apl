@@ -8,7 +8,7 @@ Returns everything but the first element in a vector.
 butFirst(x)
 }
 \arguments{
-  \item{x}{a vector}
+  \item{x}{A vector.}
 }
 \details{
 This function takes a vector and returns the original vector without the first element.

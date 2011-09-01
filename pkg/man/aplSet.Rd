@@ -10,9 +10,9 @@ Sets a value to an array.
 aplSet(a, b, cell)
 }
 \arguments{
-  \item{a}{an array}
-  \item{b}{a value to set}
-  \item{cell}{indices of cell to set the value to.  Length of indices must match the dimension of the array.}
+  \item{a}{An array.}
+  \item{b}{A value to set.}
+  \item{cell}{Indices of cell to set the value to.  Length of indices must match the dimension of the array.}
 }
 
 \references{
