@@ -7,13 +7,6 @@ function(a,b,k) {
     if (!identical(sa[-k],sb[-k]))
         stop("Shape error")
     sz<-sa; sz[k]<-sz[k]+sb[k]; 
-    # nz<-prod(sz); u<-unit(k,ra)
-    # z<-array(0,sz)
-    # for (i in 1:nz) {
-    #     ivec<-aplEncode(i,sz)
-    #     if (ivec[k] <= sa[k]) z[i]<-a[aplDecode(ivec,sa)]
-    #         else z[i]<-b[aplDecode(ivec-sa[k]*u,sb)]
-    #     }
     z <- .Call( "APLJOIN", 
                 as.double(     a ), 
                 as.integer(   sa ),

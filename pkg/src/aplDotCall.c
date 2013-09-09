@@ -106,21 +106,22 @@ SEXP
 APLJOIN( SEXP a, SEXP sa, SEXP b, SEXP sb, SEXP sz, SEXP k )
 {
     int  na = 1, nz = 1, lsa = length( sa ), lsz = length( sz ), nProtected = 0;
+    int kind = INTEGER( k )[0] - 1;
     for( int i = 0; i < lsa; i++ ){ na *= INTEGER( sa )[i]; }
     for( int i = 0; i < lsz; i++ ){ nz *= INTEGER( sz )[i]; }
     SEXP ivec, itel, nind, z;
-    PROTECT( itel = allocVector( INTSXP,    1  ) ); ++nProtected;
-    PROTECT( nind = allocVector( INTSXP,    1  ) ); ++nProtected;
-    PROTECT( ivec = allocVector( INTSXP,  lsa  ) ); ++nProtected;
-    PROTECT( z    = allocVector( REALSXP,  nz  ) ); ++nProtected;
+    PROTECT( itel = allocVector( INTSXP,    1 ) ); ++nProtected;
+    PROTECT( nind = allocVector( INTSXP,    1 ) ); ++nProtected;
+    PROTECT( ivec = allocVector( INTSXP,  lsa ) ); ++nProtected;
+    PROTECT( z    = allocVector( REALSXP,  nz ) ); ++nProtected;
     for( int i = 0; i < nz; i++ ){
         INTEGER( itel )[0] = i + 1;
         ivec = APLENCODE( itel, sz );
-        if( INTEGER( ivec )[INTEGER( k )[0]-1]<= INTEGER( sa )[INTEGER( k )[0]-1] ){
+        if( INTEGER( ivec )[kind]<= INTEGER( sa )[kind] ){
             nind = APLDECODE( ivec, sa );
             REAL( z )[i] = REAL( a )[INTEGER( nind )[0] - 1];
         } else {
-            INTEGER( ivec )[INTEGER( k )[0]-1] = INTEGER( ivec )[INTEGER( k )[0]-1] - INTEGER( sa )[INTEGER( k )[0]-1];
+            INTEGER( ivec )[kind] = INTEGER( ivec )[kind] - INTEGER( sa )[kind];
             nind = APLDECODE( ivec, sb );
             REAL( z )[i] = REAL( b )[INTEGER( nind )[0] - 1];
         }
