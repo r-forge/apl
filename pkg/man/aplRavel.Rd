@@ -13,7 +13,8 @@ aplRavel(a)
 \item{a}{An array or a matrix.}
 }
 \details{
-This function takes an array or a matrix and returns a vector.  The order of the elements will follow default R rule of column major order.
+This function takes an array or a matrix and returns a vector.  
+The order of the elements will follow default R rule of column major order.
 }
 \references{
 G. Helzer. (1989):

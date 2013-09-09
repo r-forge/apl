@@ -10,7 +10,8 @@ aplScan <- function( a, k, f = "+" ){
                  as.integer( k ),
                  as.integer( sa ),
                  as.integer( ra ),
-                 env
+                 env,
+                 package = "apl"
                );
     return( array( z, sa ) );
 }

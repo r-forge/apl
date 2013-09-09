@@ -6,7 +6,8 @@ aplSelect <- function ( a, x, drop = TRUE ){
     z <- .Call( "APLSELECT", 
                 as.double( a ), 
                 as.integer( dima ), 
-                lapply( x, as.integer ) 
+                lapply( x, as.integer ),
+                package = "apl" 
               );
     z <- array( z, sapply( x, length ) );
     if( drop ){

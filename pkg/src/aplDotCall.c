@@ -2,13 +2,13 @@
 #include <Rinternals.h>
 #include <Rdefines.h>
 
-SEXP APLDECODE( SEXP, SEXP );
-SEXP APLENCODE( SEXP, SEXP );
-SEXP APLSELECT( SEXP, SEXP, SEXP );
-SEXP APLTRANSPOSE( SEXP, SEXP, SEXP, SEXP, SEXP );
-SEXP APLSCAN( SEXP, SEXP, SEXP, SEXP, SEXP );
-SEXP APLREDUCE( SEXP, SEXP, SEXP, SEXP, SEXP, SEXP );
-SEXP APLINNERPRODUCT( SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP );
+// SEXP APLDECODE( SEXP, SEXP );
+// SEXP APLENCODE( SEXP, SEXP );
+// SEXP APLSELECT( SEXP, SEXP, SEXP );
+// SEXP APLTRANSPOSE( SEXP, SEXP, SEXP, SEXP, SEXP );
+// SEXP APLSCAN( SEXP, SEXP, SEXP, SEXP, SEXP );
+// SEXP APLREDUCE( SEXP, SEXP, SEXP, SEXP, SEXP, SEXP );
+// SEXP APLINNERPRODUCT( SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP );
 
 SEXP
 APLDECODE( SEXP cell, SEXP dims )
@@ -97,6 +97,28 @@ APLTRANSPOSE( SEXP a, SEXP x, SEXP sa, SEXP sz, SEXP rz )
         }
         nind = APLDECODE( jvec, sa );
         REAL( z )[i] = REAL( a )[INTEGER(nind)[0] - 1];
+    }
+    UNPROTECT( nProtected );
+    return z;
+}
+
+SEXP
+APLEXPAND( SEXP a, SEXP sa, SEXP p, SEXP se, SEXP axis )
+{
+    int  na = 1, nz = 1, lsa = length( sa ), lse = length( se ), nProtected = 0;
+    for( int i = 0; i < lsa; i++ ){ na *= INTEGER( sa )[i]; }
+    for( int i = 0; i < lse; i++ ){ nz *= INTEGER( se )[i]; }
+    SEXP ivec, z,itel, nind;
+    PROTECT( itel = allocVector( INTSXP,    1  ) ); ++nProtected;
+    PROTECT( nind = allocVector( INTSXP,    1  ) ); ++nProtected;
+    PROTECT( ivec = allocVector( INTSXP,  lsa  ) ); ++nProtected;
+    PROTECT( z    = allocVector( REALSXP,  nz  ) ); ++nProtected;
+    for( int i = 0; i < na; i++ ){
+        INTEGER( itel )[0] = i + 1;
+        ivec = APLENCODE( itel, sa );
+        INTEGER( ivec )[INTEGER( axis )[0] - 1] = INTEGER( p )[INTEGER( ivec )[INTEGER( axis )[0] - 1]-1];
+        nind = APLDECODE( ivec, se );
+        REAL( z )[INTEGER( nind )[0] - 1] = REAL( a )[i];
     }
     UNPROTECT( nProtected );
     return z;

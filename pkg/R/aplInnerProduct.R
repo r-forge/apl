@@ -17,7 +17,8 @@ aplInnerProduct <- function( a, b, f = "*", g = "+" ){
                   as.integer( sb ),
                   as.integer( sz ),
                   as.integer( ns ),
-                  env 
+                  env,
+                  package = "apl" 
                );
     return(array( z, sz ) )
 }

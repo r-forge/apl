@@ -5,5 +5,5 @@ aplDecode <- function( cell, dims ){
     if( any(cell > dims ) || any ( cell < 1 ) ){
        stop( "No such cell" )
     }
-    .Call( "APLDECODE", as.integer( cell ), as.integer( dims ) )
+    .Call( "APLDECODE", as.integer( cell ), as.integer( dims ), package = "apl" )
 }

@@ -12,9 +12,9 @@ APL functions in R.
 \tabular{ll}{
 Package: \tab apl\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2009-09-21\cr
-License: \tab What license is it under?\cr
+Version: \tab 0.2.0\cr
+Date: \tab 2013-09-1\cr
+License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
 APL functions in R.

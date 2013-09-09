@@ -12,5 +12,5 @@ aplEncode<-function(ind, dims){
     if( ( ind < 1 ) || ( ind > prod( dims ) ) ){
        stop ( "No such cell" )
     }
-    .Call( "APLENCODE", as.integer( ind ), as.integer( dims ) )
+    return( .Call( "APLENCODE", as.integer( ind ), as.integer( dims ), package = "apl" ) )
 }

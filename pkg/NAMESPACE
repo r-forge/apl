@@ -1,4 +1,5 @@
 useDynLib(apl)
+exportPattern("^[[:alpha:]]+")
 
 export(
     aplCRV,

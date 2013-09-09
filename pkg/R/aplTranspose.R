@@ -10,7 +10,8 @@ aplTranspose <- function( a, x = rev( 1:aplRank( a ) ) ) {
                 as.integer( x ),
                 as.integer( sa ),
                 as.integer( sz ),
-                as.integer( rz )
+                as.integer( rz ), 
+                package = "apl"
               );
     return( array( z, sz ) );
 }
