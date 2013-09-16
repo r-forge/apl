@@ -1,4 +1,4 @@
-aplReplicate <- function( x, y, k) {
+aplReplicate <- function( x, y, k ) {
     if ( is.vector( x ) ) return( aplCRV( x, y ) )
     sx <- aplShape( x ); sy<-aplShape( y ); sk<-sx[k];
     if( sy == 1 ) y <- rep( y, sk );
@@ -27,4 +27,3 @@ aplCRV <- function( x, y )
         z <- c( z, rep( x[i], y[i] ) );
 return( z );
 }
-
